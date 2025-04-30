@@ -1,0 +1,313 @@
+/* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #ffe6f2;
+    scroll-behavior: smooth;
+}
+
+/* Header Styles */
+header {
+    background-color: #ff99cc;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff66b2;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.cta-buttons a {
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.get-started, .consult-doctor {
+    background-color: #ff66b2;
+}
+
+.get-started:hover, .consult-doctor:hover {
+    background-color: #ff3399;
+}
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 120px;
+    padding: 80px 20px 40px;
+}
+
+.text-content h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.text-content p {
+    font-size: 18px;
+    color: #666;
+}
+
+.image-content img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 30px;
+    border-radius: 10px;
+}
+
+/* Features / Services */
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 60px 20px;
+    background-color: #fff;
+}
+
+.feature {
+    flex: 1 1 250px;
+    text-align: center;
+    padding: 20px;
+}
+
+.feature i {
+    font-size: 40px;
+    color: #ff66b2;
+    margin-bottom: 15px;
+}
+
+.feature h3 {
+    color: #333;
+    margin: 10px 0;
+}
+
+.feature p {
+    color: #666;
+}
+
+/* About Section */
+.about {
+    padding: 60px 20px;
+    background-color: #ffe6f2;
+}
+
+.about h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-content img {
+    border-radius: 10px;
+}
+
+.about-content div {
+    max-width: 500px;
+}
+
+.about-content p, .about-content li {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Testimonials Section */
+.testimonials {
+    padding: 60px 20px;
+    background-color: #fff;
+}
+
+.testimonials h2 {
+    text-align: center;
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+.testimonial-carousel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.testimonial {
+    flex: 1 1 250px;
+    background: #ffe6f2;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.testimonial img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.testimonial-content p {
+    font-size: 16px;
+    color: #555;
+}
+
+.author {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+.condition {
+    font-size: 14px;
+    color: #888;
+}
+
+/* Footer */
+footer {
+    background-color: #ff99cc;
+    padding: 40px 20px;
+    text-align: center;
+    color: #fff;
+}
+
+footer .logo {
+    margin-bottom: 20px;
+}
+
+.quick-links {
+    margin-bottom: 20px;
+}
+
+.quick-links a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.quick-links a:hover {
+    text-decoration: underline;
+}
+
+.social-icons {
+    margin-bottom: 20px;
+}
+
+.social-icons a {
+    color: white;
+    margin: 0 10px;
+    font-size: 20px;
+}
+
+.social-icons a:hover {
+    color: #ff66b2;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .features {
+        flex-direction: column;
+    }
+
+    .testimonial-carousel {
+        flex-direction: column;
+    }
+
+    nav {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        background: #ff99cc;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}

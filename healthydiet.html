@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Healthy Diet Selection</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style1.css"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+    
+    body {
+      background-color: #f9f3f8;
+      color: #333;
+    }
+
+    /* Header Styles */
+    header {
+      background-color: var(--primary-light);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo img {
+      height: 40px;
+      width: auto;
+    }
+
+    .logo span {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #f9f3f8;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .get-started {
+      background-color: white;
+      color: var(--primary-light);
+      padding: 0.5rem 1.5rem;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .get-started:hover {
+      background-color: #f9f3f8;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero Section Styles */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      margin-top: 80px;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 0 20px;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .hero-btn {
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .primary-btn {
+      background-color: #e84b8a;
+      color: white;
+    }
+
+    .primary-btn:hover {
+      background-color: #d13b7a;
+      transform: translateY(-2px);
+    }
+
+    .secondary-btn {
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .secondary-btn:hover {
+      background-color: white;
+      color: #e84b8a;
+      transform: translateY(-2px);
+    }
+
+    /* Footer Styles */
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 4rem 0 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .footer-section {
+      margin-bottom: 2rem;
+    }
+
+    .footer-section .logo {
+      margin-bottom: 1rem;
+    }
+
+    .footer-section p {
+      color: #ccc;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #e84b8a;
+    }
+
+    .quick-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .quick-links a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .quick-links a:hover {
+      color: #e84b8a;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .contact-item i {
+      color: #e84b8a;
+    }
+
+    .newsletter form {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .newsletter input {
+      flex: 1;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 25px;
+    }
+
+    .newsletter button {
+      background-color: #e84b8a;
+      color: white;
+      border: none;
+      padding: 0.5rem 1.5rem;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .newsletter button:hover {
+      background-color: #d13b7a;
+    }
+
+    .bottom-bar {
+      background-color: #222;
+      padding: 1rem 0;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .bottom-bar p {
+      color: #ccc;
+    }
+
+    .bottom-bar a {
+      color: #e84b8a;
+      text-decoration: none;
+    }
+
+    .bottom-bar a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .footer-section {
+        text-align: center;
+      }
+
+      .social-icons {
+        justify-content: center;
+      }
+
+      .contact-item {
+        justify-content: center;
+      }
+
+      .newsletter form {
+        flex-direction: column;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #fff0f5;
+      color: #333;
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .user-profile img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-left: 10px;
+    }
+
+    .user-dropdown {
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background-color: #fff;
+      color: #333;
+      width: 200px;
+      border-radius: 5px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      /*display: none;*/
+      flex-direction: column;
+      z-index: 1001;
+    }
+
+    .user-dropdown a {
+      padding: 12px 20px;
+      text-decoration: none;
+      color: #333;
+      border-bottom: 1px solid #eee;
+      transition: background-color 0.3s;
+    }
+
+    .user-dropdown a:hover {
+      background-color: #f8f8f8;
+    }
+
+    .diet-container {
+      padding: 30px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .food-card {
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .food-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .food-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .food-details {
+      padding: 15px;
+    }
+
+    .food-details h3 {
+      margin-bottom: 10px;
+      color: #ff66b2;
+    }
+
+    .food-details p {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    @media (max-width: 768px) {
+      .logo {
+        font-size: 20px;
+      }
+
+      .user-profile span {
+        display: none;
+      }
+    }        
+    /* Videos Page Styles */
+    .food-items-section {
+      padding: 30px 20px;
+      text-align: center;
+    }
+  
+    .food-items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+  
+    .food-item-card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s;
+      padding: 20px;
+    }
+  
+    .food-item-card:hover {
+      transform: translateY(-5px);
+    }
+  
+    .food-item-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+  
+    .food-item-card h4 {
+      color: #e84b8a;
+      margin: 10px 0 5px;
+    }
+  
+    .food-item-card p {
+      color: #666;
+      margin-bottom: 10px;
+    }
+  
+    .buy-button {
+      padding: 8px 16px;
+      background-color: #e84b8a;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+  
+    .buy-button:hover {
+      background-color: #d13b7a;
+    }
+  
+    .diet-monitoring {
+      text-align: center;
+      margin: 40px 0;
+    }
+  
+    .monitor-button {
+      padding: 12px 24px;
+      background-color: #ff66b2;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+    }
+  
+    .monitor-button:hover {
+      background-color: #e84b8a;
+    }
+  
+    /* Adjust videos grid to be fixed rectangle */
+    .videos-grid .video-card {
+      height: 280px;
+    }
+  
+    .videos-grid .video-thumbnail {
+      height: 160px;
+    }
+    .videos-page {
+        display: none;
+    }
+    
+    .videos-page.active {
+        display: block;
+    }
+    
+    .back-button {
+        display: inline-block;
+        padding: 0.8rem 1.5rem;
+        background-color: #e84b8a;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        margin-bottom: 1.5rem;
+        transition: background-color 0.3s ease;
+    }
+    
+    .back-button:hover {
+        background-color: #d13b7a;
+    }
+    
+    .videos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    
+    .video-card {
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+    
+    .video-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .video-thumbnail {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        background-color: #f0f0f0;
+        cursor: pointer;
+    }
+    
+    .play-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60px;
+        height: 60px;
+        background-color: rgba(232, 75, 138, 0.8);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.3s ease;
+    }
+    
+    .play-icon:before {
+        content: '';
+        border-style: solid;
+        border-width: 12px 0 12px 20px;
+        border-color: transparent transparent transparent white;
+        margin-left: 4px;
+    }
+    
+    .video-info {
+        padding: 1.5rem;
+    }
+    
+    .video-info h3 {
+        color: #e84b8a;
+        margin-bottom: 0.5rem;
+    }
+    
+    .video-info p {
+        color: #666;
+        line-height: 1.5;
+    }
+    
+    /* Video Popup Styles */
+    .video-popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .video-popup.active {
+        display: flex;
+    }
+    
+    .video-container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        width: 90%;
+        max-width: 800px;
+        position: relative;
+    }
+    
+    .close-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: #e84b8a;
+    }
+    
+    .video-player {
+        width: 100%;
+        aspect-ratio: 16/9;
+        margin-top: 1rem;
+    }
+    
+    @media (max-width: 768px) {
+        .categories-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    #videos-section {
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    #videos-section h3 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #e84b8a;
+    }
+
+    .videos-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .video-card {
+      width: 350px;
+      height: 400px;
+      background-color: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .video-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .video-thumbnail {
+      width: 100%;
+      height: 200px;
+      background-color: #f0f0f0;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .play-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50px;
+      height: 50px;
+      background-color: rgba(232, 75, 138, 0.8);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .play-icon:before {
+      content: '';
+      border-style: solid;
+      border-width: 10px 0 10px 16px;
+      border-color: transparent transparent transparent white;
+      margin-left: 4px;
+    }
+
+    .video-info {
+      padding: 1rem;
+      text-align: center;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .video-info h3 {
+      color: #e84b8a;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .video-info p {
+      color: #666;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+  
+    /* Hero Section Styles */
+    .hero-section {
+      background: linear-gradient(rgba(255, 153, 204, 0.8), rgba(255, 153, 204, 0.8)), url('hero-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 80px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-content h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    .hero-content p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .hero-button {
+      display: inline-block;
+      padding: 12px 30px;
+      background-color: white;
+      color: #ff66b2;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .hero-button:hover {
+      background-color: #ff66b2;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Footer Styles */
+    .footer {
+      background-color: #333;
+      color: white;
+      padding: 40px 20px;
+      margin-top: 50px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .footer-section h3 {
+      color: #ff66b2;
+      margin-bottom: 20px;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-section ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-section ul li a:hover {
+      color: #ff66b2;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 20px;
+      transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+      color: #ff66b2;
+    }
+
+    /* Navigation Bar Styles */
+    .nav-container {
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 60px;
+      z-index: 999;
+    }
+
+    .nav-menu {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+    }
+
+    .nav-menu a {
+      color: #333;
+      text-decoration: none;
+      padding: 15px 20px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-menu a:hover {
+      color: #ff66b2;
+    }
+
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background-color: #ff66b2;
+      transition: width 0.3s ease;
+    }
+
+    .nav-menu a:hover::after {
+      width: 100%;
+    }
+
+    .nav-menu a.active {
+      color: #ff66b2;
+    }
+
+    .nav-menu a.active::after {
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding: 0 10px;
+      }
+      
+      .nav-menu a {
+        padding: 15px 15px;
+        white-space: nowrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="logo">
+      <img src="https://storage.googleapis.com/a1aa/image/D7CxMwbcUe28f09Jq1qqpiFDwQtaX6FerH4ePwd7LdyOglNQB.jpg" alt="Women's Care Logo">
+      <span>Women's Care</span>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="home.html.html">Home</a></li>
+        <li><a href="doctor.html">Doctors</a></li>
+        <li><a href="medical.html">Medical Store</a></li>
+        <li><a href="select.html">Diet Plans</a></li>
+        <li><a href="checker.html.html">Symptom Checker</a></li>
+      </ul>
+      <div class="cta-buttons">
+        <a href="dash.html" class="get-started">Dash Board</a>
+      </div>
+    </nav>
+    <div class="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Healthy Diet Selection</h1>
+      <p>Discover personalized diet plans and nutrition advice for various women's health conditions</p>
+      <div class="hero-buttons">
+        <a href="#main-page" class="hero-btn primary-btn">Get Started</a>
+        <a href="#main-page" class="hero-btn secondary-btn">Watch Videos</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="main-page">
+    <section class="diet-container">
+      <div class="food-card" onclick="showVideosPage('PCOS')">
+        <img src="PCOS1.jpg" alt="PCOS Diet">
+        <div class="food-details">
+          <h3>PCOS (Polycystic Ovary Syndrome)</h3>
+        </div>
+      </div>
+      <div class="food-card" onclick="showVideosPage('Osteoporosis')">
+        <img src="Osteoporosis.jpg" alt="Osteoporosis Diet">
+        <div class="food-details">
+          <h3>Osteoporosis</h3>
+        </div>
+      </div>
+      <div class="food-card" onclick="showVideosPage('BreastCancer')">
+        <img src="cancer.jpg" alt="Breast Cancer Diet">
+        <div class="food-details">
+          <h3>Breast Cancer</h3>
+        </div>
+      </div>
+      <div class="food-card" onclick="showVideosPage('Endometriosis')">
+        <img src="Endometriosis Diet.jpg" alt="Endometriosis Diet">
+        <div class="food-details">
+          <h3>Endometriosis</h3>
+        </div>
+      </div>
+      <div class="food-card" onclick="showVideosPage('Anemia')">
+        <img src="anemia.jpg" alt="Anemia Diet">
+        <div class="food-details">
+          <h3>Anemia (Iron Deficiency)</h3>
+        </div>
+      </div>
+      <div class="food-card" onclick="showVideosPage('GestationalDiabetes')">
+        <img src="Gestational Diabetes Diet.jpg" alt="Gestational Diabetes Diet">
+        <div class="food-details">
+          <h3>Gestational Diabetes</h3>
+        </div>
+      </div>
+      <div class="food-card" onclick="showVideosPage('ThyroidDisorders')">
+        <img src="Thyroid Disorders Diet.jpg" alt="Thyroid Disorders Diet">
+        <div class="food-details">
+          <h3>Thyroid Disorders</h3>
+        </div>
+      </div>
+      <div class="food-card" onclick="showVideosPage('MenstrualDisorders')">
+        <img src="d9.jpg" alt="Menstrual Disorders Diet">
+        <div class="food-details">
+          <h3>Menstrual Disorders</h3>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div id="videos-page" class="videos-page">
+    <header style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+      <a href="#" class="back-button" onclick="showMainPage()">← Back</a>
+      <h1 id="videos-page-title" style="text-align: center; flex-grow: 1;">Disease Name</h1>
+    </header>
+
+    <section id="food-items-section" class="food-items-section">
+      <h3>Food Items</h3>
+      <div class="food-items-grid" id="food-items-grid"></div>
+    </section>
+
+    <section id="videos-section">
+      <h3>Videos</h3>
+      <div class="videos-grid" id="videos-grid"></div>
+    </section>
+
+    <div class="diet-monitoring">
+      <p>If you want to follow the diet by monitoring click below.</p>
+      <button class="monitor-button" onclick="monitorDiet()">Monitor Diet</button>
+    </div>
+  </div>
+
+  <!-- Video Popup -->
+  <div class="video-popup" id="videoPopup">
+    <div class="video-container">
+        <button class="close-button" onclick="closePopup()">&times;</button>
+        <h2 id="popupTitle"></h2>
+        <iframe id="videoPlayer" class="video-player" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-section">
+        <div class="logo">
+          <img src="https://storage.googleapis.com/a1aa/image/D7CxMwbcUe28f09Jq1qqpiFDwQtaX6FerH4ePwd7LdyOglNQB.jpg" alt="Women's Care Logo">
+          <span>Women's Care</span>
+        </div>
+        <p>Empowering women's health through comprehensive care and support.</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <div class="quick-links">
+          <a href="home.html.html">Home</a>
+          <a href="doctor.html">Find a Doctor</a>
+          <a href="medical.html">Medical Store</a>
+          <a href="select.html">Diet Plans</a>
+          <a href="checker.html.html">Symptom Checker</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <span>+1 (555) 123-4567</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>support@womenscare.com</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>123 Health Street, Medical City</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Newsletter</h3>
+        <p>Subscribe to receive health tips and updates.</p>
+        <div class="newsletter">
+          <form>
+            <input type="email" placeholder="Enter your email">
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-bar">
+      <p>&copy; 2024 Women's Care. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const videoData = {
+      PCOS: [
+            { 
+                title: "First Trimester Essentials", 
+                url: "https://youtu.be/AcssLy2IxLs?si=l_uitZVHXxYwq2xc",
+                description: "Essential information for the first trimester of pregnancy",
+                thumbnail: "https://img.youtube.com/vi/AcssLy2IxLs/maxresdefault.jpg"
+            }],
+           
+        Osteoporosis: [
+            { 
+                title: "Nutrition During Pregnancy", 
+                url: "https://youtu.be/_dVuHFdUN0c?si=-J_0MzzZHmbhOHcB",
+                description: "Important nutritional guidelines during pregnancy",
+                thumbnail: "https://img.youtube.com/vi/_dVuHFdUN0c/maxresdefault.jpg"
+            }],
+            BreastCancer:[   { 
+                title: "Iron-Rich Diets", 
+                url: "https://youtu.be/4rSJYxUWj5M?si=G5WpdSKCB2exBW7u",
+                description: "Learn about iron-rich foods for better health",
+                thumbnail: "https://img.youtube.com/vi/4rSJYxUWj5M/maxresdefault.jpg"
+            }],
+            Endometriosis:[ { 
+                title: "Calcium for Bone Health", 
+                url: "https://youtu.be/44DqBysYW-w?si=muTvbo3Z1v8YljUX",
+                description: "Importance of calcium for strong bones",
+                thumbnail: "https://img.youtube.com/vi/44DqBysYW-w/maxresdefault.jpg"
+            }
+        ],
+        Anemia: [
+            { 
+                title: "30-Minute Full Body Workout", 
+                url: "https://youtu.be/Qymarl8FyEk?si=tY_156pSQgkvzp2O",
+                description: "Complete workout routine for women",
+                thumbnail: "https://img.youtube.com/vi/Qymarl8FyEk/maxresdefault.jpg"
+            }],
+            GestationalDiabetes:[
+            { 
+                title: "Yoga for Women", 
+                url: "https://youtu.be/3YzSpRncW4s?si=CZuCXKrrjVRfFjIZ",
+                description: "Yoga poses specifically designed for women",
+                thumbnail: "https://img.youtube.com/vi/3YzSpRncW4s/maxresdefault.jpg"
+            }
+        ],
+        ThyroidDisorders: [
+            { 
+                title: "Stress Management Techniques", 
+                url: "https://youtu.be/grfXR6FAsI8?si=AAlBDlwRpkJze91I",
+                description: "Effective ways to manage stress",
+                thumbnail: "https://img.youtube.com/vi/grfXR6FAsI8/maxresdefault.jpg"
+            }],
+            MenstrualDisorders:[
+            { 
+                title: "Self-Care Practices", 
+                url: "https://youtu.be/Z9bIMtQ-a78?si=XpGNGdJt8FWErlQ-",
+                description: "Important self-care routines for women",
+                thumbnail: "https://img.youtube.com/vi/Z9bIMtQ-a78/maxresdefault.jpg"
+            }
+        ]
+    };
+
+    const foodData = {
+      PCOS: [
+        { name: "Avocado", image: "p1.jpeg", calories: "160 cal/100g" },
+        { name: "Spinach", image: "p2.webp", calories: "23 cal/100g" },
+        { name: "Salmon", image: "p3.webp", calories: "208 cal/100g" },
+        { name: "Oats", image: "p4.jpg", calories: "68 cal/100g" }
+      ],
+      Osteoporosis: [
+        { name: "Yogurt", image: "o1.jpg", calories: "59 cal/100g" },
+        { name: "Almond milk", image: "o2.jpg", calories: "17 cal/100ml" },
+        { name: "Sardines", image: "o3.png", calories: "208 cal/100g" },
+        { name: "Kale", image: "o4.webp", calories: "35 cal/100g" }
+      ],
+      BreastCancer: [
+        { name: "Tomato", image: "b1.jpg", calories: "18 cal/100g" },
+        { name: "Walnuts", image: "b2.jpg", calories: "654 cal/100g" },
+        { name: "Green Tea", image: "b3.jpg", calories: "2 cal/cup" },
+        { name: "Flaxseeds", image: "b4.webp", calories: "534 cal/100g" }
+      ],
+      Endometriosis: [
+        { name: "Broccoli", image: "e1.jpg", calories: "55 cal/100g" },
+        { name: "Turmeric", image: "e2.jpeg", calories: "312 cal/100g" },
+        { name: "Chia Seeds", image: "e3.webp", calories: "486 cal/100g" },
+        { name: "Blueberries", image: "e4.jpg", calories: "57 cal/100g" }
+      ],
+      Anemia: [
+        { name: "Red Meat", image: "i1.jpg", calories: "250 cal/100g" },
+        { name: "Spinach", image: "i2.jpg", calories: "23 cal/100g" },
+        { name: "Lentils", image: "i3.jpeg", calories: "116 cal/100g" },
+        { name: "Pumpkin Seeds", image: "i4.jpg", calories: "559 cal/100g" }
+      ],
+      GestationalDiabetes: [
+        { name: "Quinoa", image: "1.webp", calories: "120 kcal" },
+        { name: "Avocado", image: "2.jpg", calories: "160 kcal" },
+        { name: "Spinach", image: "3.jpg", calories: "30 kcal" },
+        { name: "Greek Yogurt", image: "4.jpeg", calories: "100 kcal" }
+      ],
+      ThyroidDisorders: [
+        { name: "Sweet Potatoes", image: "t1.jpg", calories: "86 cal/100g" },
+        { name: "Brown Rice", image: "t2.jpg", calories: "111 cal/100g cooked" },
+        { name: "Apple", image: "t3.webp", calories: "52 cal/100g" },
+        { name: "Greek Yogurt", image: "t4.jpg", calories: "59 cal/100g" }
+      ],
+      MenstrualDisorders: [
+        { name: "Quinoa", image: "m1.png", calories: "120 cal/100g cooked" },
+        { name: "Sesame Seeds", image: "m2.jpeg", calories: "573 cal/100g" },
+        { name: "Tofu", image: "m3.webp", calories: "144 cal/100g" },
+        { name: "Banana", image: "m4.jpeg", calories: "89 cal/100g" }
+      ]
+    };
+    
+    function showVideosPage(category) {
+      document.getElementById('main-page').style.display = 'none';
+      document.getElementById('videos-page').classList.add('active');
+      document.getElementById('videos-page-title').textContent = category.charAt(0).toUpperCase() + category.slice(1);
+    
+      const videosGrid = document.getElementById('videos-grid');
+      videosGrid.innerHTML = '';
+    
+      videoData[category].forEach(video => {
+        const videoCard = document.createElement('div');
+        videoCard.className = 'video-card';
+        videoCard.innerHTML = `
+          <div class="video-thumbnail" onclick="playVideo('${video.url}', '${video.title}', '${video.description}')">
+              <img src="${video.thumbnail}" alt="${video.title}" style="width: 100%; height: 100%; object-fit: cover;">
+              <div class="play-icon"></div>
+          </div>
+          <div class="video-info">
+              <h3>${video.title}</h3>
+              <p>${video.description}</p>
+          </div>
+        `;
+        videosGrid.appendChild(videoCard);
+      });
+    
+      const foodItemsGrid = document.getElementById('food-items-grid');
+      foodItemsGrid.innerHTML = '';
+    
+      foodData[category].forEach(food => {
+        const foodCard = document.createElement('div');
+        foodCard.className = 'food-item-card';
+        foodCard.innerHTML = `
+          <img src="${food.image}" alt="${food.name}">
+          <h4>${food.name}</h4>
+          <p>${food.calories}</p>
+          <button class="buy-button">Buy</button>
+        `;
+        foodItemsGrid.appendChild(foodCard);
+      });
+    }
+    
+    function monitorDiet() {
+      alert("Your diet is monitored now onwards!");
+      showMainPage();
+    }
+    function showMainPage() {
+        document.getElementById('videos-page').classList.remove('active');
+        document.getElementById('main-page').style.display = 'block';
+    }
+
+    function playVideo(url, title, description) {
+        const popup = document.getElementById('videoPopup');
+        const videoPlayer = document.getElementById('videoPlayer');
+        const popupTitle = document.getElementById('popupTitle');
+        
+        const videoId = url.split('?')[0].split('/').pop();
+        videoPlayer.src = `https://www.youtube.com/embed/${videoId}`;
+        popupTitle.textContent = title;
+        
+        popup.classList.add('active');
+    }
+
+    function closePopup() {
+        const popup = document.getElementById('videoPopup');
+        const videoPlayer = document.getElementById('videoPlayer');
+        popup.classList.remove('active');
+        videoPlayer.src = '';
+    }
+
+    function toggleDropdown() {
+      const dropdown = document.getElementById("userDropdown");
+      dropdown.style.display = dropdown.style.display === "flex" ? "none" : "flex";
+    }
+
+    window.onclick = function(e) {
+      if (!e.target.closest(".user-profile")) {
+        document.getElementById("userDropdown").style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>

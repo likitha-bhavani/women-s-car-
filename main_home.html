@@ -1,0 +1,755 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Care Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+    :root {
+        --primary-color: #ff66b2;
+        --primary-dark: #ff3399;
+        --primary-light: #ff99cc;
+        --text-light: #ffffff;
+        --text-dark: #333333;
+        --background-light: #ffe6f2;
+        --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: var(--background-light);
+        color: var(--text-dark);
+        line-height: 1.6;
+        scroll-behavior: smooth;
+    }
+
+    header {
+        background-color: var(--primary-light);
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: var(--shadow);
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--text-light);
+    }
+
+    .logo img {
+        height: 35px;
+        margin-right: 12px;
+        transition: var(--transition);
+    }
+
+    .logo:hover img {
+        transform: scale(1.1);
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 25px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-links li a {
+        text-decoration: none;
+        color: var(--text-light);
+        font-weight: 500;
+        font-size: 16px;
+        padding: 8px 12px;
+        border-radius: 5px;
+        transition: var(--transition);
+    }
+
+    .nav-links li a:hover {
+        background-color: var(--primary-color);
+        color: var(--text-light);
+    }
+
+    .cta-buttons {
+        display: flex;
+        gap: 12px;
+    }
+
+    .cta-buttons a {
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-weight: 500;
+        transition: var(--transition);
+    }
+
+    .cta-buttons .get-started {
+        background-color: var(--primary-color);
+        color: var(--text-light);
+    }
+
+    .cta-buttons .get-started:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-2px);
+    }
+
+    .cta-buttons .consult-doctor {
+        background-color: transparent;
+        color: var(--text-light);
+        border: 2px solid var(--text-light);
+    }
+
+    .cta-buttons .consult-doctor:hover {
+        background-color: var(--text-light);
+        color: var(--primary-color);
+        transform: translateY(-2px);
+    }
+
+    .menu-toggle {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: var(--text-light);
+        transition: var(--transition);
+    }
+
+    .menu-toggle:hover {
+        color: var(--primary-color);
+    }
+
+    .hero-section {
+        padding: 120px 30px 80px;
+        position: relative;
+        min-height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: var(--text-light);
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    }
+
+    .hero-section .text-content {
+        max-width: 800px;
+        z-index: 1;
+    }
+
+    .hero-section h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-section p {
+        font-size: 20px;
+        margin-bottom: 30px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-section .image-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+    }
+
+    .hero-section .image-content img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .features {
+        padding: 80px 30px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .feature {
+        background-color: var(--text-light);
+        padding: 30px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+    }
+
+    .feature:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .feature i {
+        font-size: 48px;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+    }
+
+    .feature h3 {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: var(--text-dark);
+    }
+
+    .feature p {
+        color: #666;
+        line-height: 1.6;
+    }
+
+    .about {
+        padding: 80px 30px;
+        background-color: var(--text-light);
+    }
+
+    .about h2 {
+        text-align: center;
+        font-size: 36px;
+        margin-bottom: 40px;
+        color: var(--text-dark);
+    }
+
+    .about-content {
+        display: flex;
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+        align-items: center;
+    }
+
+    .about-content img {
+        border-radius: 15px;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+    }
+
+    .about-content img:hover {
+        transform: scale(1.02);
+    }
+
+    .about-content div {
+        flex: 1;
+    }
+
+    .about-content p {
+        margin-bottom: 20px;
+        color: var(--text-dark);
+    }
+
+    .about-content ul {
+        list-style-position: inside;
+        margin-left: 20px;
+    }
+
+    .about-content li {
+        margin-bottom: 10px;
+        color: var(--text-dark);
+    }
+
+    .testimonials {
+        padding: 80px 30px;
+        background-color: var(--background-light);
+    }
+
+    .testimonials h2 {
+        text-align: center;
+        font-size: 36px;
+        margin-bottom: 40px;
+        color: var(--text-dark);
+    }
+
+    .testimonial-carousel {
+        display: flex;
+        gap: 30px;
+        overflow-x: auto;
+        padding: 20px 0;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .testimonial {
+        flex: 0 0 300px;
+        background-color: var(--text-light);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: var(--shadow);
+        scroll-snap-align: start;
+        transition: var(--transition);
+    }
+
+    .testimonial:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .testimonial img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        display: block;
+        object-fit: cover;
+    }
+
+    .testimonial-content {
+        text-align: center;
+    }
+
+    .testimonial-content p {
+        font-style: italic;
+        margin-bottom: 15px;
+        color: var(--text-dark);
+    }
+
+    .testimonial-content .author {
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 5px;
+    }
+
+    .testimonial-content .condition {
+        color: var(--text-dark);
+        font-size: 14px;
+    }
+
+    /* Enhanced Footer Styles */
+    footer {
+        background: linear-gradient(to right, #ff66b2, #ff99cc);
+        color: #fff;
+        padding: 60px 30px 30px;
+        position: relative;
+        overflow: hidden;
+    }
+    footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.05)"/></svg>') repeat;
+        opacity: 0.1;
+    }
+    footer .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        position: relative;
+        z-index: 1;
+    }
+    footer .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+    footer .logo img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: white;
+        padding: 5px;
+        transition: 0.3s;
+    }
+    footer .logo:hover img {
+        transform: rotate(360deg);
+    }
+    footer .logo span {
+        font-size: 24px;
+        font-weight: 700;
+        color: white;
+    }
+    footer .footer-section {
+        margin-bottom: 30px;
+    }
+    footer .footer-section h3 {
+        font-size: 20px;
+        margin-bottom: 20px;
+        color: white;
+        position: relative;
+        padding-bottom: 10px;
+    }
+    footer .footer-section h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+    footer .footer-section p {
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+    footer .quick-links {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    footer .quick-links a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    footer .quick-links a::before {
+        content: '→';
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: 0.3s;
+    }
+    footer .quick-links a:hover {
+        color: white;
+        transform: translateX(5px);
+    }
+    footer .quick-links a:hover::before {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    footer .social-icons {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+    footer .social-icons a {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+    footer .social-icons a:hover {
+        background-color: white;
+        color: #ff66b2;
+        transform: translateY(-5px);
+    }
+    footer .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    footer .contact-info .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: rgba(255, 255, 255, 0.8);
+    }
+    footer .contact-info .contact-item i {
+        width: 35px;
+        height: 35px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s;
+    }
+    footer .contact-info .contact-item:hover i {
+        background-color: white;
+        color: #ff66b2;
+    }
+    footer .newsletter {
+        margin-top: 20px;
+    }
+    footer .newsletter form {
+        display: flex;
+        gap: 10px;
+    }
+    footer .newsletter input {
+        flex: 1;
+        padding: 12px 15px;
+        border: none;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        transition: 0.3s;
+    }
+    footer .newsletter input::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+    }
+    footer .newsletter input:focus {
+        outline: none;
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    footer .newsletter button {
+        padding: 12px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: white;
+        color: #ff66b2;
+        font-weight: 500;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    footer .newsletter button:hover {
+        background-color: #ff99cc;
+        transform: translateY(-2px);
+    }
+    footer .bottom-bar {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 14px;
+    }
+    footer .bottom-bar a {
+        color: white;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+    footer .bottom-bar a:hover {
+        color: #ffe6f2;
+    }
+    @media (max-width: 768px) {
+        footer {
+            padding: 40px 20px 20px;
+        }
+        footer .container {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        footer .footer-section {
+            text-align: center;
+        }
+        footer .footer-section h3::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        footer .quick-links {
+            align-items: center;
+        }
+        footer .social-icons {
+            justify-content: center;
+        }
+        footer .contact-info {
+            align-items: center;
+        }
+        footer .newsletter form {
+            flex-direction: column;
+        }
+        footer .newsletter button {
+            width: 100%;
+        }
+    }
+    @media (min-width: 769px) {
+        .menu-toggle {
+            display: none;
+        }
+    }
+    </style>
+</head>
+<body>
+    <header>
+    <div class="logo">
+        <img alt="W logo representing Women's Care" height="30" src="https://storage.googleapis.com/a1aa/image/D7CxMwbcUe28f09Jq1qqpiFDwQtaX6FerH4ePwd7LdyOglNQB.jpg" width="30" />
+        Women's Care
+    </div>
+    <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="cta-buttons">
+            <a href="p_log.html" class="get-started">login</a>
+            <a href="p_sig2.html" class="consult-doctor">Sign Up</a>
+        </div>
+    </nav>
+</header>
+
+    <section id="home" class="hero-section">
+        <div class="text-content">
+            <h1>Empowering Women's Reproductive Health</h1>
+            <p>Welcome to our platform dedicated to providing comprehensive health services for women.</p>
+        </div>
+        <div class="image-content">
+            <img alt="Background image of diverse women smiling and supporting each other, representing empowerment and community." src="https://storage.googleapis.com/a1aa/image/niCU0qEfoEVhe0amtzKskQUlx36zkDbmTSPu15Gmy3QySZDUA.jpg">
+        </div>
+    </section>
+    <section id="services" class="features">
+        <div class="feature">
+            <a href="checker.html"> <i class="fas fa-stethoscope"></i></a>
+            <h3>Symptom Checker</h3>
+            <p>Check your symptoms and get advice.</p>
+        </div>
+        <div class="feature">
+            <a href="doctor.html"><i class="fas fa-user-md"></i></a>
+            <h3>Doctor Consultations</h3>
+            <p>Consult with experienced doctors.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-heartbeat"></i>
+            <h3>Health Tips</h3>
+            <p>Get daily health tips and advice.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-calendar-alt"></i>
+            <h3>Appointment Scheduling</h3>
+            <p>Get daily health tips and advice.</p>
+        </div>
+    </section>
+    <section id="about" class="about">
+        <h2>About Our Platform</h2>
+        <div class="about-content">
+            <img alt="A group of diverse women smiling and supporting each other, representing empowerment and community." height="300" src="https://storage.googleapis.com/a1aa/image/niCU0qEfoEVhe0amtzKskQUlx36zkDbmTSPu15Gmy3QySZDUA.jpg" width="400"/>
+            <div>
+                <p>Our mission is to empower women by providing personalized solutions for reproductive health through advanced technology and expert guidance.</p>
+                <p>Platform Benefits:</p>
+                <ul>
+                    <li><strong>Comprehensive Support:</strong> Address issues like PCOS, endometriosis, and pregnancy complications.</li>
+                    <li><strong>Tailored Solutions:</strong> Custom exercise and diet plans for better health management.</li>
+                    <li><strong>Expert Care:</strong> Seamless video consultations with specialized doctors.</li>
+                    <li><strong>Convenient Medicine Access:</strong> Easy ordering with delivery options.</li>
+                    <li><strong>Interactive Learning:</strong> FAQs, chatbot support, and educational resources.</li>
+                    <li><strong>Secure and Easy to Use:</strong> Privacy-focused, user-friendly platform design.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="testimonials">
+        <h2>Testimonials</h2>
+        <div class="testimonial-carousel">
+            <div class="testimonial">
+                <img alt="Profile picture of Sarah D." height="100" src="https://storage.googleapis.com/a1aa/image/AGEw9Xsr0YpcCxCfCV3oirNVeueVwRUJj0GABqd5Gu6CnzGoA.jpg" width="100"/>
+                <div class="testimonial-content">
+                    <p>"This platform has been life-changing! The personalized diet and exercise plans helped me manage my PCOS symptoms better than ever. I feel healthier and more confident."</p>
+                    <div class="author">- Sarah D.</div>
+                    <div class="condition">Condition: PCOS</div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <img alt="Profile picture of Priya K." height="100" src="https://storage.googleapis.com/a1aa/image/0MMMMij8435iHJ52ks4jxjdUNC5oN5bYjgOmPbwyOz74c2AF.jpg" width="100"/>
+                <div class="testimonial-content">
+                    <p>"Connecting with a specialist was so easy. I got the care I needed without stepping out of my home. The exercise routines also reduced my pain significantly."</p>
+                    <div class="author">- Priya K.</div>
+                    <div class="condition">Condition: Endometriosis</div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <img alt="Profile picture of Jane Doe." height="100" src="https://storage.googleapis.com/a1aa/image/mfZxVZCztC0TIKBy7XLDEDrWvoh0zW7rwnssNxLsHdmy5sBKA.jpg" width="100"/>
+                <div class="testimonial-content">
+                    <p>"This platform has been a lifesaver. The symptom checker helped me identify a health issue early on."</p>
+                    <div class="author">- Jane Doe</div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <img alt="Profile picture of Mary Smith." height="100" src="https://storage.googleapis.com/a1aa/image/NLNAJXuLrAKbDtwhSaovsEfowxfivkjRuuWopATkkfZMnzGoA.jpg" width="100"/>
+                <div class="testimonial-content">
+                    <p>"Consulting with a doctor was so easy and convenient. I got the advice I needed without leaving my home."</p>
+                    <div class="author">- Mary Smith</div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <img alt="Profile picture of Sarah Johnson." height="100" src="https://storage.googleapis.com/a1aa/image/DB4ESby71L4bD1mZhBYSZKpjUB3AxtlkWr00fas6ZYzv5sBKA.jpg" width="100"/>
+                <div class="testimonial-content">
+                    <p>"The health tips are very informative and have helped me make better lifestyle choices."</p>
+                    <div class="author">- Sarah Johnson</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-section">
+                <div class="logo">
+                    <img src="https://storage.googleapis.com/a1aa/image/D7CxMwbcUe28f09Jq1qqpiFDwQtaX6FerH4ePwd7LdyOglNQB.jpg" alt="Women's Care Logo">
+                    <span>Women's Care</span>
+                </div>
+                <p>Empowering women's health through comprehensive care and support.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <div class="quick-links">
+                    <a href="home.html.html">Home</a>
+                    <a href="doctor.html">Find a Doctor</a>
+                    <a href="medical.html">Medical Store</a>
+                    <a href="diet.html">Diet Plans</a>
+                    <a href="checker.html.html">Symptom Checker</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>support@womenscare.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>123 Health Street, Medical City</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive health tips and updates.</p>
+                <div class="newsletter">
+                    <form>
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            <p>&copy; 2024 Women's Care. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+    
+        <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('header nav');
+    toggle.addEventListener('click', () => {
+        nav.classList.toggle('active');
+    });
+</script>
+</body></html>

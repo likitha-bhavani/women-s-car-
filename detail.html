@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Detail - Women's Care</title>
+  <link rel="stylesheet" href="style1.css">
+  <style>
+    /* Add your detail page styles here */
+    .gallery-thumb { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; margin: 0 5px; cursor: pointer; }
+    .gallery-thumb.selected { border: 2px solid #ff66b2; }
+    .related-carousel { display: flex; gap: 16px; overflow-x: auto; margin-top: 24px; }
+    .related-card { min-width: 120px; text-align: center; }
+  </style>
+</head>
+<body>
+  <main>
+    <div id="product-detail"></div>
+    <h3>Related Products</h3>
+    <div id="related-products" class="related-carousel"></div>
+  </main>
+  <script src="products-data.js"></script> 
+  <script>
+    // Get product ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+    const product = products.find(p => p._id == productId);
+
+    if (!product) {
+      document.getElementById('product-detail').innerHTML = '<p>Product not found.</p>';
+    } else {
+      // Main image and gallery
+      let gallery = '';
+      if (product.images && product.images.length > 1) {
+        gallery = product.images.map((img, i) =>
+          `<img src="${img}" class="gallery-thumb${i===0?' selected':''}" onclick="document.getElementById('main-img').src='${img}';document.querySelectorAll('.gallery-thumb').forEach(t=>t.classList.remove('selected'));this.classList.add('selected');">`
+        ).join('');
+      }
+      // Reviews
+      let reviews = product.reviews && product.reviews.length
+        ? product.reviews.map(r => `<div><span style='color:#ffc107;'>${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</span> <b>${r.user}:</b> ${r.comment}</div>`).join('')
+        : '<i>No reviews yet.</i>';
+      // Add to Cart/Upload Prescription
+      let actionBtn = product.requiresPrescription
+        ? `<button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Upload Prescription</button>`
+        : `<button class="bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600">Add to Cart</button>`;
+      // Render product detail
+      document.getElementById('product-detail').innerHTML = `
+        <div style="display:flex;gap:32px;align-items:flex-start;">
+          <div>
+            <img id="main-img" src="${product.images ? product.images[0] : product.image}" style="width:320px;height:320px;object-fit:cover;border-radius:12px;">
+            <div style="margin-top:10px;">${gallery}</div>
+          </div>
+          <div>
+            <h2>${product.name}</h2>
+            <div>${product.dosage || ''}</div>
+            <div style="color:#ff66b2;font-size:24px;font-weight:bold;">₹${product.price}</div>
+            <div>${product.description || ''}</div>
+            <div>${product.ingredients ? `<b>Ingredients:</b> ${product.ingredients.join(', ')}` : ''}</div>
+            <div>${product.usage ? `<b>Usage:</b> ${product.usage}` : ''}</div>
+            <div>${product.warnings ? `<b>Warnings:</b> ${product.warnings}` : ''}</div>
+            <div style="margin:12px 0;">${actionBtn}</div>
+            <div><b>Reviews:</b><br>${reviews}</div>
+          </div>
+        </div>
+      `;
+      // Related products
+      const related = products.filter(p => p.category === product.category && p._id !== product._id).slice(0, 6);
+      document.getElementById('related-products').innerHTML = related.length
+        ? related.map(rp => `<div class="related-card"><img src="${rp.image}" style="width:80px;height:80px;object-fit:cover;border-radius:8px;cursor:pointer;" onclick="window.location.href='detail.html?id=${rp._id}'"><div style="font-size:13px;">${rp.name}</div></div>`).join('')
+        : '<i>No related products.</i>';
+    }
+  </script>
+</body>
+</html>

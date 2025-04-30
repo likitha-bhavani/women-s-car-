@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Care</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style1.css">
+    <style>
+        /* Custom styles */
+        .navbar {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(255, 192, 203, 0.7), rgba(255, 192, 203, 0.7)), url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            color: #333;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 3rem 0;
+        }
+
+        .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+        }
+
+        .social-icons a:hover {
+            color: #ffc0cb;
+        }
+
+        /* Exercise Section Styles */
+        .exercise-section {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .exercise-section h2 {
+            text-align: center;
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .exercise-section h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #ff66b2;
+            margin: 15px auto;
+        }
+
+        .exercise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .exercise-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .exercise-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .exercise-card i {
+            font-size: 3rem;
+            color: #ff66b2;
+            margin-bottom: 20px;
+        }
+
+        .exercise-card h3 {
+            color: #333;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .exercise-card p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .exercise-card ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 25px;
+        }
+
+        .exercise-card ul li {
+            color: #555;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .exercise-card ul li:before {
+            content: '✓';
+            color: #ff66b2;
+            margin-right: 8px;
+        }
+
+        .exercise-card .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #ff66b2;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .exercise-card .btn:hover {
+            background: #ff3399;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .exercise-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .exercise-section h2 {
+                font-size: 2rem;
+            }
+
+            .exercise-card {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .exercise-section {
+                padding: 40px 0;
+            }
+
+            .exercise-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .exercise-card i {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Feature Sections Styling */
+        .feature-section {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+        .feature-section:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .feature-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .feature-content.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .feature-image {
+            flex: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .feature-text {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .feature-text h2 {
+            color: #333;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .feature-text h2:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #ff66b2;
+            margin: 15px 0;
+        }
+
+        .feature-text p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .feature-text ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+
+        .feature-text ul li {
+            color: #555;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-text ul li:before {
+            content: '✓';
+            color: #ff66b2;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .feature-text .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #ff66b2;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .feature-text .btn:hover {
+            background: #ff3399;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 102, 178, 0.3);
+        }
+
+        /* Responsive Design for Feature Sections */
+        @media (max-width: 992px) {
+            .feature-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .feature-content.reverse {
+                flex-direction: column;
+            }
+
+            .feature-image {
+                width: 100%;
+            }
+
+            .feature-image img {
+                height: 300px;
+            }
+
+            .feature-text {
+                text-align: center;
+            }
+
+            .feature-text h2:after {
+                margin: 15px auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .feature-section {
+                padding: 50px 0;
+            }
+
+            .feature-text h2 {
+                font-size: 1.8rem;
+            }
+
+            .feature-text p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Features Grid Section Styling */
+        .features-grid-section {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .feature-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card .feature-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .feature-card .feature-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover .feature-image img {
+            transform: scale(1.1);
+        }
+
+        .feature-card .feature-text {
+            padding: 25px;
+        }
+
+        .feature-card h2 {
+            color: #333;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .feature-card h2:after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background: #ff66b2;
+            margin: 10px 0;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .feature-card ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .feature-card ul li {
+            color: #555;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-card ul li:before {
+            content: '✓';
+            color: #ff66b2;
+            margin-right: 8px;
+            font-weight: bold;
+        }
+
+        .feature-card .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background: #ff66b2;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: center;
+        }
+
+        .feature-card .btn:hover {
+            background: #ff3399;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 102, 178, 0.3);
+        }
+
+        /* Responsive Design for Features Grid */
+        @media (max-width: 992px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .feature-card .feature-image {
+                height: 200px;
+            }
+
+            .features-grid-section {
+                padding: 50px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="https://storage.googleapis.com/a1aa/image/D7CxMwbcUe28f09Jq1qqpiFDwQtaX6FerH4ePwd7LdyOglNQB.jpg" alt="Women's Care Logo">
+            <span>Women's Care</span>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="home.html.html">Home</a></li>
+                <li><a href="doctor.html">Doctors</a></li>
+                <li><a href="medical.html">Medical Store</a></li>
+                <li><a href="diet.html">Diet Plans</a></li>
+                <li><a href="checker.html.html">Symptom Checker</a></li>
+            </ul>
+            <div class="cta-buttons">
+                <a href="dash.html" class="get-started">Dash Board</a>
+            </div>
+            <button id="dark-mode-toggle" class="dark-mode-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="image-content">
+            <img src="diett.jpg" alt="Healthy Lifestyle Hero Image">
+        </div>
+        <div class="text-content">
+            <h1>Your Personalized Health Journey</h1>
+            <p>Get customized diet plans, exercise programs, and daily health tips tailored to your needs.</p>
+            
+        </div>
+    </section>
+
+    <!-- Features Grid Section -->
+    <section class="features-grid-section">
+        <div class="container">
+            <div class="features-grid">
+                <!-- Diet Section -->
+                <div class="feature-card">
+                    <div class="feature-image">
+                        <img src="diet.jpg" alt="Healthy Diet">
+                    </div>
+                    <div class="feature-text">
+                        <h2>Balanced Nutrition Plans</h2>
+                        <p>Discover personalized diet plans tailored to your health goals and dietary preferences.</p>
+                        <ul>
+                            <li>Customized calorie intake</li>
+                            <li>Nutrient-rich meal suggestions</li>
+                            <li>Healthy snack options</li>
+                            <li>Weekly meal planning guides</li>
+                        </ul>
+                        <a href="healthydiet.html" class="btn">View Diet Plans</a>
+                    </div>
+                </div>
+
+                <!-- Exercise Section -->
+                <div class="feature-card">
+                    <div class="feature-image">
+                        <img src="exercise.jpg" alt="Exercise Program">
+                    </div>
+                    <div class="feature-text">
+                        <h2>Custom Exercise Programs</h2>
+                        <p>Get access to professionally designed workout routines that match your fitness level.</p>
+                        <ul>
+                            <li>Cardio workouts</li>
+                            <li>Strength training</li>
+                            <li>Flexibility exercises</li>
+                            <li>Progress tracking tools</li>
+                        </ul>
+                        <a href="exercise.html" class="btn">Start Exercising</a>
+                    </div>
+                </div>
+
+                <!-- Personal Diet Section -->
+                <div class="feature-card">
+                    <div class="feature-image">
+                        <img src="personal-diet.jpg" alt="Personal Diet Plan">
+                    </div>
+                    <div class="feature-text">
+                        <h2>Personalized Diet Solutions</h2>
+                        <p>Receive a customized diet plan based on your specific needs and preferences.</p>
+                        <ul>
+                            <li>Dietary restrictions</li>
+                            <li>Health condition considerations</li>
+                            <li>Weight management goals</li>
+                            <li>Lifestyle-based planning</li>
+                        </ul>
+                        <a href="diet.html" class="btn">Get Your Plan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-section">
+                <div class="logo">
+                    <img src="https://storage.googleapis.com/a1aa/image/D7CxMwbcUe28f09Jq1qqpiFDwQtaX6FerH4ePwd7LdyOglNQB.jpg" alt="Women's Care Logo">
+                    <span>Women's Care</span>
+                </div>
+                <p>Empowering women's health through comprehensive care and support.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <div class="quick-links">
+                    <a href="home.html.html">Home</a>
+                    <a href="doctor.html">Find a Doctor</a>
+                    <a href="medical.html">Medical Store</a>
+                    <a href="diet.html">Diet Plans</a>
+                    <a href="checker.html.html">Symptom Checker</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>support@womenscare.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>123 Health Street, Medical City</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive health tips and updates.</p>
+                <div class="newsletter">
+                    <form>
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            <p>&copy; 2024 Women's Care. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const icon = darkModeToggle.querySelector('i');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+        });
+    </script>
+</body>
+</html>

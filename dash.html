@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Women's Care</title>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="https://storage.googleapis.com/a1aa/image/D7CxMwbcUe28f09Jq1qqpiFDwQtaX6FerH4ePwd7LdyOglNQB.jpg" alt="Women's Care Logo">
+            <span>Women's Care</span>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="home.html.html">Home</a></li>
+                <li><a href="doctor.html">Doctors</a></li>
+                <li><a href="medical.html">Medical Store</a></li>
+                <li><a href="select.html">Diet Plans</a></li>
+                <li><a href="checker.html.html">Symptom Checker</a></li>
+            </ul>
+            <div class="user-profile">
+                <img src="women.jpg" alt="User Profile" class="profile-img">
+                <div class="dropdown-menu">
+                    <a href="#"><i class="fas fa-user"></i> Profile</a>
+                    <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                    <a href="main_home.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="image-content">
+            <img src="healthdash.jpg" alt="Dashboard Hero Image">
+        </div>
+        <div class="text-content">
+            <h1>Welcome to Your Health Dashboard</h1>
+            <p>Track your health journey, manage appointments, and stay on top of your wellness goals.</p>
+            <div class="cta-buttons">
+                <a href="#quick-stats" class="get-started">View Health Stats</a>
+                <a href="#appointments" class="consult-doctor">Book Appointment</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Dashboard Content -->
+    <main class="dashboard">
+        <!-- Quick Stats Section -->
+        <section class="quick-stats">
+            <div class="stat-card">
+                <i class="fas fa-calendar-check"></i>
+                <div class="stat-info">
+                    <h3>Upcoming Appointments</h3>
+                    <div class="stat-value">3</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-pills"></i>
+                <div class="stat-info">
+                    <h3>Active Medications</h3>
+                    <div class="stat-value">5</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-heartbeat"></i>
+                <div class="stat-info">
+                    <h3>Health Score</h3>
+                    <div class="stat-value">85%</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-clipboard-list"></i>
+                <div class="stat-info">
+                    <h3>Pending Tasks</h3>
+                    <div class="stat-value">2</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Health History Timeline -->
+        <section class="health-history">
+            <div class="section-header">
+                <h2>Health History</h2>
+                <button class="btn btn-outline">View All</button>
+            </div>
+            <div class="history-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">March 15, 2024</div>
+                    <div class="timeline-content">
+                        <h3>Annual Check-up</h3>
+                        <p>Completed annual health check-up with Dr. Sarah Johnson</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">March 10, 2024</div>
+                    <div class="timeline-content">
+                        <h3>Vaccination</h3>
+                        <p>Received flu vaccination</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">March 5, 2024</div>
+                    <div class="timeline-content">
+                        <h3>Lab Results</h3>
+                        <p>Blood test results reviewed - All parameters normal</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Saved Plans Grid -->
+        <section class="saved-plans">
+            <div class="section-header">
+                <h2>Saved Plans</h2>
+                <button class="btn btn-outline">Create New</button>
+            </div>
+            <div class="plans-grid">
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Weight Management</h3>
+                        <span class="plan-type">Diet & Exercise</span>
+                    </div>
+                    <div class="plan-progress">
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%"></div>
+                        </div>
+                        <span>75% Complete</span>
+                    </div>
+                    <div class="plan-actions">
+                        <button class="btn btn-primary">Continue</button>
+                        <button class="btn btn-outline">Edit</button>
+                    </div>
+                </div>
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Stress Management</h3>
+                        <span class="plan-type">Meditation</span>
+                    </div>
+                    <div class="plan-progress">
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 60%"></div>
+                        </div>
+                        <span>60% Complete</span>
+                    </div>
+                    <div class="plan-actions">
+                        <button class="btn btn-primary">Continue</button>
+                        <button class="btn btn-outline">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Appointments List -->
+        <section class="appointments">
+            <div class="section-header">
+                <h2>Upcoming Appointments</h2>
+                <button class="btn btn-outline">Schedule New</button>
+            </div>
+            <div class="appointments-list">
+                <div class="appointment-card">
+                    <div class="appointment-info">
+                        <h3>Dr. Sarah Johnson</h3>
+                        <p><i class="fas fa-calendar"></i> March 20, 2024 - 10:00 AM</p>
+                        <p><i class="fas fa-stethoscope"></i> General Check-up</p>
+                    </div>
+                    <div class="appointment-actions">
+                        <button class="btn btn-primary">Join Call</button>
+                        <button class="btn btn-outline">Reschedule</button>
+                    </div>
+                </div>
+                <div class="appointment-card">
+                    <div class="appointment-info">
+                        <h3>Dr. Emily Brown</h3>
+                        <p><i class="fas fa-calendar"></i> March 25, 2024 - 2:30 PM</p>
+                        <p><i class="fas fa-stethoscope"></i> Follow-up Consultation</p>
+                    </div>
+                    <div class="appointment-actions">
+                        <button class="btn btn-primary">Join Call</button>
+                        <button class="btn btn-outline">Reschedule</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Order Tracking -->
+        <section class="order-tracking">
+            <div class="section-header">
+                <h2>Order Tracking</h2>
+                <button class="btn btn-outline">View All Orders</button>
+            </div>
+            <div class="tracking-timeline">
+                <div class="timeline-step completed">
+                    <i class="fas fa-box"></i>
+                    <p>Order Placed</p>
+                </div>
+                <div class="timeline-step completed">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Confirmed</p>
+                </div>
+                <div class="timeline-step active">
+                    <i class="fas fa-truck"></i>
+                    <p>In Transit</p>
+                </div>
+                <div class="timeline-step">
+                    <i class="fas fa-home"></i>
+                    <p>Delivered</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menstrual Cycle Tracking -->
+        <section class="cycle-tracking">
+            <div class="section-header">
+                <h2>Cycle Tracking</h2>
+                <button class="btn btn-outline">Update</button>
+            </div>
+            <div class="cycle-info">
+                <div class="cycle-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-calendar-alt"></i>
+                        <div class="stat-info">
+                            <h3>Cycle Length</h3>
+                            <div class="stat-value">28 days</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-clock"></i>
+                        <div class="stat-info">
+                            <h3>Next Period</h3>
+                            <div class="stat-value">In 12 days</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-chart-line"></i>
+                        <div class="stat-info">
+                            <h3>Regularity</h3>
+                            <div class="stat-value">Regular</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cycle-calendar">
+                    <!-- Calendar will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Charts -->
+        <section class="progress-charts">
+            <div class="section-header">
+                <h2>Health Progress</h2>
+                <button class="btn btn-outline">View Details</button>
+            </div>
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3>Weight Trend</h3>
+                    <canvas id="weightChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Sleep Quality</h3>
+                    <canvas id="sleepChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Activity Level</h3>
+                    <canvas id="activityChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Health Tips -->
+        <section class="health-tips">
+            <div class="section-header">
+                <h2>Health Tips</h2>
+                <button class="btn btn-outline">More Tips</button>
+            </div>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-water"></i>
+                    <h3>Stay Hydrated</h3>
+                    <p>Drink at least 8 glasses of water daily to maintain proper hydration.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-bed"></i>
+                    <h3>Quality Sleep</h3>
+                    <p>Aim for 7-8 hours of sleep to support overall health and well-being.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-walking"></i>
+                    <h3>Daily Exercise</h3>
+                    <p>Include 30 minutes of moderate exercise in your daily routine.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+ <footer>
+        <div class="container">
+            <div class="footer-section">
+                <div class="logo">
+                    <img src="https://storage.googleapis.com/a1aa/image/D7CxMwbcUe28f09Jq1qqpiFDwQtaX6FerH4ePwd7LdyOglNQB.jpg" alt="Women's Care Logo">
+                    <span>Women's Care</span>
+                </div>
+                <p>Empowering women's health through comprehensive care and support.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <div class="quick-links">
+                    <a href="home.html.html">Home</a>
+                    <a href="doctor.html">Find a Doctor</a>
+                    <a href="medical.html">Medical Store</a>
+                    <a href="select.html">Diet Plans</a>
+                    <a href="checker.html.html">Symptom Checker</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>support@womenscare.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>123 Health Street, Medical City</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive health tips and updates.</p>
+                <div class="newsletter">
+                    <form>
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            <p>&copy; 2024 Women's Care. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+    <script>
+        // Initialize Charts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Weight Trend Chart
+            const weightCtx = document.getElementById('weightChart').getContext('2d');
+            new Chart(weightCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Weight (kg)',
+                        data: [65, 64, 63.5, 63, 62.5, 62],
+                        borderColor: '#ff66b2',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+
+            // Sleep Quality Chart
+            const sleepCtx = document.getElementById('sleepChart').getContext('2d');
+            new Chart(sleepCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [{
+                        label: 'Hours of Sleep',
+                        data: [7, 6.5, 8, 7.5, 7, 8.5, 7],
+                        backgroundColor: '#ff99cc'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+
+            // Activity Level Chart
+            const activityCtx = document.getElementById('activityChart').getContext('2d');
+            new Chart(activityCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [{
+                        label: 'Steps',
+                        data: [8000, 10000, 7500, 9000, 11000, 8500, 9500],
+                        borderColor: '#ff3399',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+        });
+
+        // User Profile Dropdown
+        const userProfile = document.querySelector('.user-profile');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        userProfile.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!userProfile.contains(e.target)) {
+                dropdownMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

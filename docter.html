@@ -1,0 +1,509 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Consultation - Women's Care Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #ffe6f2;
+            scroll-behavior: smooth;
+        }
+        header, footer {
+            background-color: #ff99cc;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e0e0e0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        header .logo, footer .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            display: flex;
+            align-items: center;
+        }
+        header .logo img, footer .logo img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+        header nav, footer nav {
+            display: flex;
+            gap: 20px;
+            padding-right:20%;
+        }
+        header nav a, footer nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        header nav a:hover, footer nav a:hover {
+            color: #ff66b2;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .cta-buttons a {
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+        .cta-buttons .get-started {
+            background-color: #ff66b2;
+        }
+        .cta-buttons .get-started:hover {
+            background-color: #ff3399;
+        }
+        .cta-buttons .consult-doctor {
+            background-color: #ff66b2;
+        }
+        .cta-buttons .consult-doctor:hover {
+            background-color: #ff3399;
+        }
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 100px 20px 60px;
+            color: #fff;
+            position: relative;
+        }
+        .hero-section .text-content {
+            z-index: 1;
+        }
+        .hero-section .image-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .hero-section .image-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+        }
+        .hero-section h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .hero-section p {
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+        .doctor-profiles {
+            padding: 40px 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .doctor-profiles h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .doctor-profiles .filters {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .doctor-profiles .filters select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .doctor-profiles .doctor {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .doctor-profiles .doctor img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .doctor-profiles .doctor .details {
+            flex: 1;
+        }
+        .doctor-profiles .doctor .details h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .doctor-profiles .doctor .details p {
+            margin: 5px 0;
+        }
+        .doctor-profiles .doctor .details .availability {
+            font-weight: bold;
+            color: #ff66b2;
+        }
+        .appointment-booking {
+            padding: 40px 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        .appointment-booking h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .appointment-booking .calendar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .appointment-booking .calendar input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .appointment-booking .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .appointment-booking .cta-buttons a {
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+        .appointment-booking .cta-buttons .confirm-appointment {
+            background-color: #ff66b2;
+        }
+        .appointment-booking .cta-buttons .confirm-appointment:hover {
+            background-color: #ff3399;
+        }
+        .video-consultation {
+            padding: 40px 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        .video-consultation h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .video-consultation .video-chat {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .video-consultation .video-chat video {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .video-consultation .post-consultation-notes {
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .video-consultation .post-consultation-notes h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .video-consultation .post-consultation-notes p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .medication-list {
+            margin-top: 20px;
+        }
+        .medication-list h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .medication-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .medication-list ul li {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        .medication-list .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .medication-list .cta-buttons a {
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+        .medication-list .cta-buttons .buy-medicine {
+            background-color: #ff66b2;
+        }
+        .medication-list .cta-buttons .buy-medicine:hover {
+            background-color: #ff3399;
+        }
+        .medication-list .cta-buttons .download-pdf {
+            background-color: #ff66b2;
+        }
+        .medication-list .cta-buttons .download-pdf:hover {
+            background-color: #ff3399;
+        }
+        footer {
+            background-color: #ff99cc;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        footer .social-icons {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+        }
+        footer .social-icons a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        footer .social-icons a:hover {
+            color: #ff66b2;
+        }
+        footer .quick-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        footer .quick-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        footer .quick-links a:hover {
+            color: #ff66b2;
+        }
+        @media (max-width: 768px) {
+            header nav, footer nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            .cta-buttons {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .menu-toggle {
+                display: block;
+                cursor: pointer;
+                font-size: 24px;
+                color: #fff;
+            }
+            header nav {
+                display: none;
+                flex-direction: column;
+                gap: 10px;
+                background-color: #ff99cc;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                padding: 10px 0;
+            }
+            header nav a {
+                padding: 10px;
+                width: 100%;
+                text-align: center;
+            }
+            header nav.active {
+                display: flex;
+            }
+        }
+        @media (min-width: 769px) {
+            .menu-toggle {
+                display: none;
+            }
+            header nav {
+                justify-content: flex-start;
+            }
+            .cta-buttons {
+                display: flex;
+                gap: 10px;
+            }
+            header nav a.get-started, header nav a.consult-doctor {
+                display: none;
+            }
+            .cta-buttons a.get-started, .cta-buttons a.consult-doctor {
+                display: inline-block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img alt="W logo representing Women's Care" height="30" src="https://storage.googleapis.com/a1aa/image/D7CxMwbcUe28f09Jq1qqpiFDwQtaX6FerH4ePwd7LdyOglNQB.jpg" width="30"/>
+            Women's Care
+        </div>
+        <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="main_home.html">Home</a></li>
+                <li><a href="checker.html">Symptom Checker</a></li>
+                <li><a href="doctor.html">Doctor Consultation</a></li>
+                <li><a href="medical.html">Medicine</a></li>
+                <li><a href="exercise.html">Exercise</a></li>
+                <li><a href="select.html">Diet</a></li>
+            </ul>
+            <div class="cta-buttons">
+                <a href="p_log.html" class="get-started">Login</a>
+                <a href="p_sig2.html" class="consult-doctor">Sign Up</a>
+            </div>
+        </nav>
+    </header>
+    <section id="home" class="hero-section">
+        <div class="text-content">
+            <h1>Doctor Consultation</h1>
+            <p>Facilitate online consultations with certified professionals.</p>
+        </div>
+        <div class="image-content">
+            <img alt="Background image of diverse women smiling and supporting each other, representing empowerment and community." src="https://storage.googleapis.com/a1aa/image/niCU0qEfoEVhe0amtzKskQUlx36zkDbmTSPu15Gmy3QySZDUA.jpg">
+        </div>
+    </section>
+    <section class="doctor-profiles">
+        <h2>Doctor Profiles</h2>
+        <div class="filters">
+            <select id="specialty-filter">
+                <option value="all">All Specialties</option>
+                <option value="gynecologist">Gynecologist</option>
+                <option value="nutritionist">Nutritionist</option>
+            </select>
+        </div>
+        <div class="doctor">
+            <img alt="Doctor smiling and wearing a white coat" src="https://storage.googleapis.com/a1aa/image/NH3xLTmxBsapKdbLqZpPU1puIjgDCQxvynXHHfX2fjm9wZDUA.jpg"/>
+            <div class="details">
+                <h3>Dr. Jane Smith</h3>
+                <p>Specialty: Gynecologist</p>
+                <p>Credentials: MD, OB/GYN</p>
+                <p class="availability">Availability: Mon-Fri, 9am-5pm</p>
+            </div>
+        </div>
+        <div class="doctor">
+            <img alt="Doctor with a stethoscope around their neck" src="https://storage.googleapis.com/a1aa/image/awG6I21dun5JCZQdHIfbKoOsKe8ZetbTFTg6HEO3fqeSIObgC.jpg"/>
+            <div class="details">
+                <h3>Dr. John Doe</h3>
+                <p>Specialty: Nutritionist</p>
+                <p>Credentials: PhD, Nutrition Science</p>
+                <p class="availability">Availability: Tue-Thu, 10am-4pm</p>
+            </div>
+        </div>
+    </section>
+    <section class="appointment-booking">
+        <h2>Book an Appointment</h2>
+        <div class="calendar">
+            <input type="date" id="appointment-date" required>
+        </div>
+        <div class="cta-buttons">
+            <a href="#" class="confirm-appointment">Confirm Appointment</a>
+        </div>
+    </section>
+    <section class="video-consultation">
+        <h2>Video Consultation</h2>
+        <div class="video-chat">
+            <video id="video-chat" controls autoplay></video>
+        </div>
+        <div class="post-consultation-notes">
+            <h3>Post-Consultation Notes</h3>
+            <p>Dr. Jane Smith: "Please follow the prescribed medication and schedule a follow-up appointment in two weeks."</p>
+        </div>
+        <div class="medication-list">
+            <h3>Prescribed Medications</h3>
+            <ul>
+                <li>Medication 1: Dosage and Instructions</li>
+                <li>Medication 2: Dosage and Instructions</li>
+                <li>Medication 3: Dosage and Instructions</li>
+            </ul>
+            <div class="cta-buttons">
+                <a href="#" class="buy-medicine">Buy Medicine</a>
+                <a href="#" class="download-pdf" onclick="downloadPDF()">Download PDF</a>
+            </div>
+        </div>
+    </section>
+    <footer id="contact">
+        <div class="logo">
+            <img alt="W logo representing Women's Care" height="30" src="https://storage.googleapis.com/a1aa/image/D7CxMwbcUe28f09Jq1qqpiFDwQtaX6FerH4ePwd7LdyOglNQB.jpg" width="30"/>
+            Women's Care
+        </div>
+        <nav class="quick-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Us</a>
+        </nav>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p>&copy; 2023 Women's Care Platform. All rights reserved.</p>
+    </footer>
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('header nav').classList.toggle('active');
+        });
+
+        // Placeholder for video chat integration
+        const videoChat = document.getElementById('video-chat');
+        videoChat.src = 'https://www.example.com/sample-video.mp4'; // Replace with actual video chat integration
+
+        // Placeholder for appointment confirmation
+        document.querySelector('.confirm-appointment').addEventListener('click', function() {
+            alert('Appointment confirmed! A confirmation email/SMS has been sent to you.');
+        });
+
+        function downloadPDF() {
+            const doc = new jsPDF();
+            doc.text("Prescribed Medications", 10, 10);
+            doc.text("1. Medication 1: Dosage and Instructions", 10, 20);
+            doc.text("2. Medication 2: Dosage and Instructions", 10, 30);
+            doc.text("3. Medication 3: Dosage and Instructions", 10, 40);
+            doc.save("medications.pdf");
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs

@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health & Lifestyle Plans - Women's Care</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style1.css">
+    <!-- Add Chart.js for progress tracking -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Add GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        /* Gamified Rewards & Achievements Styling */
+        .gamified-rewards {
+            background: #fff0fa;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(255,102,178,0.08);
+            padding: 32px 24px;
+            margin-bottom: 40px;
+        }
+        .rewards-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+        .points-display {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #ff66b2;
+            display: flex;
+            align-items: baseline;
+        }
+        .points-label {
+            font-size: 1rem;
+            color: #888;
+            margin-left: 8px;
+        }
+        .rewards-actions .btn {
+            background: #fff;
+            color: #ff66b2;
+            border: 2px solid #ff66b2;
+            border-radius: 6px;
+            padding: 8px 20px;
+            font-weight: 500;
+            transition: background 0.2s, color 0.2s;
+        }
+        .rewards-actions .btn:hover {
+            background: #ff66b2;
+            color: #fff;
+        }
+        .challenges-section {
+            margin-bottom: 32px;
+        }
+        #challenges-list {
+            list-style: none;
+            padding: 0;
+        }
+        .challenge-item {
+            background: #ffe6f2;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            font-size: 1.05rem;
+            transition: background 0.2s;
+        }
+        .challenge-item.completed {
+            background: #e0ffe6;
+            text-decoration: line-through;
+            color: #aaa;
+        }
+        .challenge-type {
+            font-size: 0.9em;
+            color: #888;
+            margin-left: 8px;
+        }
+        .challenge-points {
+            background: #ff66b2;
+            color: #fff;
+            border-radius: 12px;
+            padding: 2px 10px;
+            font-size: 0.9em;
+            margin-left: 12px;
+        }
+        .badges-section {
+            margin-bottom: 32px;
+        }
+        .badges-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+        .badge-card {
+            background: #fff6fa;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(255,102,178,0.07);
+            padding: 18px 22px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 120px;
+            max-width: 160px;
+            text-align: center;
+        }
+        .badge-card i {
+            font-size: 2.2rem;
+            color: #ff66b2;
+            margin-bottom: 8px;
+        }
+        .badge-name {
+            font-weight: 600;
+            color: #ff3399;
+            margin-bottom: 2px;
+        }
+        .badge-desc {
+            font-size: 0.95em;
+            color: #888;
+        }
+        .leaderboard-section {
+            margin-top: 32px;
+        }
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(255,102,178,0.07);
+        }
+        .leaderboard-table th, .leaderboard-table td {
+            padding: 12px 10px;
+            text-align: center;
+        }
+        .leaderboard-table th {
+            background: #ffe6f2;
+            color: #ff3399;
+            font-weight: 600;
+        }
+        .leaderboard-table tr {
+            border-bottom: 1px solid #f3d6e6;
+        }
+        .leaderboard-table tr.highlight {
+            background: #fff0fa;
+            font-weight: bold;
+            color: #ff66b2;
+        }
+        .leaderboard-table tr:last-child {
+            border-bottom: none;
+        }
+        @media (max-width: 700px) {
+            .gamified-rewards { padding: 18px 6px; }
+            .badges-grid { gap: 8px; }
+            .badge-card { min-width: 90px; max-width: 120px; padding: 10px 8px; }
+            .leaderboard-table th, .leaderboard-table td { padding: 7px 2px; font-size: 0.95em; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="https://storage.googleapis.com/a1aa/image/D7CxMwbcUe28f09Jq1qqpiFDwQtaX6FerH4ePwd7LdyOglNQB.jpg" alt="Women's Care Logo">
+            <span>Women's Care</span>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="home.html.html">Home</a></li>
+                <li><a href="doctor.html">Doctors</a></li>
+                <li><a href="medical.html">Medical Store</a></li>
+                <li><a href="select.html">Diet Plans</a></li>
+                <li><a href="checker.html.html">Symptom Checker</a></li>
+
+            </ul>
+           <div class="cta-buttons">
+                <a href="dash.html" class="get-started">Dash Board</a>
+            </div>
+            </div>
+            <button id="dark-mode-toggle" class="dark-mode-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="image-content">
+            <img src="diett.jpg" alt="Healthy Lifestyle Hero Image">
+        </div>
+        <div class="text-content">
+            <h1>Your Personalized Health Journey</h1>
+            <p>Get customized diet plans, exercise programs, and daily health tips tailored to your needs.</p>
+            <div class="cta-buttons">
+                <a href="#create-plan" class="get-started">Create Your Plan</a>
+                <a href="#track-progress" class="consult-doctor">Track Progress</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <!-- AI Diet Plan Generator -->
+        <section id="create-plan" class="diet-plan-generator">
+            <h2>Create Your Personalized Diet Plan</h2>
+            <div class="plan-form">
+                <form id="diet-plan-form">
+                    <div class="form-group">
+                        <label for="health-conditions">Health Conditions</label>
+                        <select id="health-conditions" multiple>
+                            <option value="pcos">PCOS</option>
+                            <option value="endometriosis">Endometriosis</option>
+                            <option value="anemia">Anemia</option>
+                            <option value="thyroid">Thyroid</option>
+                            <option value="general">General Wellness</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="dietary-preferences">Dietary Preferences</label>
+                        <select id="dietary-preferences" multiple>
+                            <option value="vegetarian">Vegetarian</option>
+                            <option value="vegan">Vegan</option>
+                            <option value="gluten-free">Gluten Free</option>
+                            <option value="dairy-free">Dairy Free</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="weight-goals">Weight Goals</label>
+                        <select id="weight-goals">
+                            <option value="lose">Lose Weight</option>
+                            <option value="maintain">Maintain Weight</option>
+                            <option value="gain">Gain Weight</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="allergies">Allergies (optional)</label>
+                        <input type="text" id="allergies" placeholder="e.g., nuts, dairy">
+                    </div>
+                    <div class="form-group">
+                        <label for="cuisine">Preferred Cuisines (optional)</label>
+                        <input type="text" id="cuisine" placeholder="e.g., Indian, Mediterranean">
+                    </div>
+                    <div class="weekly-feedback">
+                        <label for="plan-feedback">Feedback for next week's plan:</label>
+                        <textarea id="plan-feedback" rows="2" placeholder="E.g., I want more vegetarian options"></textarea>
+                        <button id="next-week-plan" class="btn btn-primary">Get Next Week's Plan</button>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Generate Plan</button>
+                </form>
+            </div>
+
+            <!-- Generated Diet Plan Display -->
+            <div id="generated-plan" class="generated-plan hidden">
+                <div class="plan-header">
+                    <h3>Your Personalized Meal Plan</h3>
+                    <button class="btn btn-outline" id="download-plan">
+                        <i class="fas fa-download"></i> Download PDF
+                    </button>
+                </div>
+                <div class="meal-cards">
+                    <div class="meal-card">
+                        <h4>Breakfast</h4>
+                        <img src="break.jpg" alt="Breakfast Meal">
+                        <div class="meal-details">
+                            <p class="meal-name">Oatmeal with Berries</p>
+                            <div class="nutrition-info">
+                                <span>Calories: 350</span>
+                                <span>Protein: 12g</span>
+                                <span>Carbs: 45g</span>
+                                <span>Fat: 8g</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="meal-card">
+                        <h4>Lunch</h4>
+                        <img src="lunch.jpg" alt="Lunch Meal">
+                        <div class="meal-details">
+                            <p class="meal-name">Grilled Chicken Salad</p>
+                            <div class="nutrition-info">
+                                <span>Calories: 400</span>
+                                <span>Protein: 30g</span>
+                                <span>Carbs: 35g</span>
+                                <span>Fat: 12g</span>
+                            </div>
+                            <a href="#" class="recipe-link">View Recipe</a>
+                        </div>
+                    </div>
+                    <!-- Add more meal cards for dinner, snacks -->
+                </div>
+                <div class="shopping-list">
+                    <h4>Shopping List</h4>
+                    <ul id="ingredients-list">
+                        <li><input type="checkbox"> Oats</li>
+                        <li><input type="checkbox"> Berries</li>
+                        <li><input type="checkbox"> Chicken breast</li>
+                        <!-- ... -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise Programs -->
+        <section class="exercise-programs">
+            <h2>Condition-Specific Exercise Programs</h2>
+            <div class="difficulty-filter">
+                <label>Filter by Difficulty:</label>
+                <button class="filter-btn" data-level="all">All</button>
+                <button class="filter-btn" data-level="beginner">Beginner</button>
+                <button class="filter-btn" data-level="intermediate">Intermediate</button>
+                <button class="filter-btn" data-level="advanced">Advanced</button>
+            </div>
+            <div class="fitness-customization">
+                <label for="fitness-level">Your Fitness Level:</label>
+                <select id="fitness-level">
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                </select>
+                <label for="limitations">Physical Limitations (optional):</label>
+                <input type="text" id="limitations" placeholder="e.g., knee pain">
+                <button id="apply-fitness-filter" class="btn btn-outline">Apply</button>
+            </div>
+            <div class="program-grid">
+                <div class="program-card" data-condition="pcos">
+                    <div class="program-header">
+                        <i class="fas fa-heartbeat"></i>
+                        <h3>PCOS Fitness</h3>
+                    </div>
+                    <div class="program-content">
+                        <p>Strength training and cardio combination</p>
+                        <div class="video-preview">
+                            <img src="pcosworkout.jpg" alt="PCOS Workout">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                        <div class="difficulty-levels">
+                            <span class="level beginner">Beginner</span>
+                            <span class="level intermediate">Intermediate</span>
+                            <span class="level advanced">Advanced</span>
+                        </div>
+                        <button class="btn btn-outline">Start Program</button>
+                    </div>
+                </div>
+                <div class="program-card" data-condition="endometriosis">
+                    <div class="program-header">
+                        <i class="fas fa-yoga"></i>
+                        <h3>Pain Relief Yoga</h3>
+                    </div>
+                    <div class="program-content">
+                        <p>Gentle yoga for pain management</p>
+                        <div class="video-preview">
+                            <img src="yoga-workout.jpg" alt="Yoga Workout">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                        <div class="difficulty-levels">
+                            <span class="level beginner">Beginner</span>
+                            <span class="level intermediate">Intermediate</span>
+                        </div>
+                        <button class="btn btn-outline">Start Program</button>
+                    </div>
+                </div>
+                <div class="program-card" data-condition="energy">
+                    <div class="program-header">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Energy Boost</h3>
+                    </div>
+                    <div class="program-content">
+                        <p>Quick cardio sessions for energy</p>
+                        <div class="video-preview">
+                            <img src="cardio-workout.jpg" alt="Cardio Workout">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                        <div class="difficulty-levels">
+                            <span class="level beginner">Beginner</span>
+                            <span class="level intermediate">Intermediate</span>
+                            <span class="level advanced">Advanced</span>
+                        </div>
+                        <button class="btn btn-outline">Start Program</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Daily Health Tips -->
+        <section class="health-tips">
+            <h2>Daily Health Tips & Guides</h2>
+            <div class="tips-carousel" id="tips-carousel">
+                <!-- Tips will be dynamically inserted here -->
+            </div>
+            <div class="tip-actions">
+                <button class="btn btn-outline" id="next-tip">Show Another Tip</button>
+            </div>
+        </section>
+
+        <!-- Progress Tracking -->
+        <section id="track-progress" class="progress-tracking">
+            <h2>Track Your Progress</h2>
+            <div class="tracking-grid">
+                <div class="tracking-card">
+                    <h3>Upload Progress</h3>
+                    <div class="upload-area">
+                        <input type="file" id="progress-photo" accept="image/*,video/*" hidden multiple>
+                        <label for="progress-photo" class="upload-label">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>Upload Meal/Exercise Photo or Video</span>
+                        </label>
+                    </div>
+                    <div class="progress-gallery" id="progress-gallery">
+                        <!-- Gallery items will be dynamically inserted here -->
+                    </div>
+                </div>
+                <div class="tracking-card">
+                    <h3>Health Metrics</h3>
+                    <div class="metrics-grid">
+                        <div class="metric">
+                            <span class="metric-label">Weight</span>
+                            <span class="metric-value">65 kg</span>
+                            <div class="metric-trend down">
+                                <i class="fas fa-arrow-down"></i>
+                                <span>-2 kg</span>
+                            </div>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Steps</span>
+                            <span class="metric-value">8,500</span>
+                            <div class="metric-trend up">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+1,200</span>
+                            </div>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Water</span>
+                            <span class="metric-value">1.5L</span>
+                            <div class="metric-trend up">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+0.5L</span>
+                            </div>
+                        </div>
+                    </div>
+                    <canvas id="progress-chart"></canvas>
+                </div>
+            </div>
+            <div class="progress-timeline" id="progress-timeline">
+                <h3>Progress Timeline</h3>
+                <!-- Timeline items will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <!-- Rewards & Achievements -->
+        <section class="rewards gamified-rewards">
+            <h2>Your Achievements & Rewards</h2>
+            <div class="rewards-header">
+                <div class="points-display">
+                    <span class="points" id="user-points">250</span>
+                    <span class="points-label">points</span>
+                </div>
+                <div class="rewards-actions">
+                    <button class="btn btn-outline" id="claim-reward">Claim Reward</button>
+                </div>
+            </div>
+            <div class="challenges-section">
+                <h3>Daily & Weekly Challenges</h3>
+                <ul id="challenges-list">
+                    <!-- Challenges will be dynamically inserted here -->
+                </ul>
+            </div>
+            <div class="badges-section">
+                <h3>Your Badges</h3>
+                <div class="badges-grid" id="badges-grid">
+                    <!-- Badges will be dynamically inserted here -->
+                </div>
+            </div>
+            <div class="leaderboard-section">
+                <h3>Leaderboard</h3>
+                <table class="leaderboard-table">
+                    <thead>
+                        <tr><th>Rank</th><th>User</th><th>Points</th></tr>
+                    </thead>
+                    <tbody id="leaderboard-body">
+                        <!-- Leaderboard rows will be dynamically inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-section">
+                <div class="logo">
+                    <img src="https://storage.googleapis.com/a1aa/image/D7CxMwbcUe28f09Jq1qqpiFDwQtaX6FerH4ePwd7LdyOglNQB.jpg" alt="Women's Care Logo">
+                    <span>Women's Care</span>
+                </div>
+                <p>Empowering women's health through comprehensive care and support.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <div class="quick-links">
+                    <a href="home.html.html">Home</a>
+                    <a href="doctor.html">Find a Doctor</a>
+                    <a href="medical.html">Medical Store</a>
+                    <a href="select.html">Diet Plans</a>
+                    <a href="checker.html.html">Symptom Checker</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>support@womenscare.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>123 Health Street, Medical City</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive health tips and updates.</p>
+                <div class="newsletter">
+                    <form>
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            <p>&copy; 2024 Women's Care. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <div id="video-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <iframe id="exercise-video" width="100%" height="315" src="" frameborder="0" allowfullscreen></iframe>
+            <div id="exercise-instructions"></div>
+        </div>
+    </div>
+
+    <!-- Meal Rating Modal -->
+    <div id="meal-rating-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn" id="close-rating-modal">&times;</span>
+            <h3>Rate Your Meal</h3>
+            <form id="meal-rating-form">
+                <label>Taste:
+                    <select name="taste">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </label>
+                <label>Difficulty:
+                    <select name="difficulty">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </label>
+                <label>Satisfaction:
+                    <select name="satisfaction">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </label>
+                <button type="submit" class="btn btn-primary">Submit Rating</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const icon = darkModeToggle.querySelector('i');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+        });
+
+        // User Profile Dropdown
+        const userProfile = document.querySelector('.user-profile');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        userProfile.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!userProfile.contains(e.target)) {
+                dropdownMenu.classList.remove('active');
+            }
+        });
+
+        // Diet Plan Form
+        const dietPlanForm = document.getElementById('diet-plan-form');
+        dietPlanForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Show loading animation
+            gsap.to('.plan-form', { opacity: 0.5, duration: 0.3 });
+            
+            // Simulate AI plan generation
+            setTimeout(() => {
+                document.getElementById('generated-plan').classList.remove('hidden');
+                gsap.from('.meal-card', { 
+                    y: 50, 
+                    opacity: 0, 
+                    duration: 0.5, 
+                    stagger: 0.2 
+                });
+                gsap.to('.plan-form', { opacity: 1, duration: 0.3 });
+            }, 2000);
+        });
+
+        // --- Progress Photo/Video Upload & Gallery ---
+        const progressPhoto = document.getElementById('progress-photo');
+        const progressGallery = document.getElementById('progress-gallery');
+        const progressTimeline = document.getElementById('progress-timeline');
+        let uploads = [];
+
+        progressPhoto.addEventListener('change', (e) => {
+            const files = Array.from(e.target.files);
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(ev) {
+                    const uploadType = file.type.startsWith('image') ? 'Meal' : 'Exercise';
+                    const date = new Date().toLocaleDateString();
+                    const upload = {
+                        src: ev.target.result,
+                        type: file.type,
+                        label: uploadType,
+                        date: date
+                    };
+                    uploads.unshift(upload);
+                    renderGallery();
+                    renderTimeline();
+                    if (uploadType === 'Meal') openMealRatingModal();
+                };
+                reader.readAsDataURL(file);
+            });
+        });
+
+        function renderGallery() {
+            progressGallery.innerHTML = uploads.map(upload => `
+                <div class="gallery-item">
+                    ${upload.type.startsWith('image') ? `<img src="${upload.src}" alt="${upload.label} Photo">` : `<video src="${upload.src}" controls></video>`}
+                    <div class="gallery-overlay">
+                        <span class="date">${upload.date}</span>
+                        <span class="type">${upload.label}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderTimeline() {
+            progressTimeline.innerHTML = '<h3>Progress Timeline</h3>' + uploads.map(upload => `
+                <div class="timeline-item">
+                    <span class="timeline-date">${upload.date}</span>
+                    <span class="timeline-type">${upload.label}</span>
+                    ${upload.type.startsWith('image') ? `<img src="${upload.src}" alt="${upload.label} Photo" class="timeline-thumb">` : `<video src="${upload.src}" controls class="timeline-thumb"></video>`}
+                    <div class="ai-feedback">AI Feedback: <em>Coming soon!</em></div>
+                </div>
+            `).join('');
+        }
+
+        // --- Meal Rating Modal Logic ---
+        const mealRatingModal = document.getElementById('meal-rating-modal');
+        const closeRatingModal = document.getElementById('close-rating-modal');
+        const mealRatingForm = document.getElementById('meal-rating-form');
+        function openMealRatingModal() {
+            mealRatingModal.classList.remove('hidden');
+        }
+        closeRatingModal.addEventListener('click', () => {
+            mealRatingModal.classList.add('hidden');
+        });
+        mealRatingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Save or process meal rating here
+            mealRatingModal.classList.add('hidden');
+            alert('Thank you for rating your meal!');
+        });
+
+        // Progress Chart
+        const ctx = document.getElementById('progress-chart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Weight (kg)',
+                    data: [65, 64.5, 64, 63.8, 63.5, 63.2, 63],
+                    borderColor: '#ff66b2',
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+        // Video Preview Click Handlers
+        document.querySelectorAll('.play-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const videoContainer = this.closest('.video-preview');
+                // Add video player logic here
+                alert('Video player will open here');
+            });
+        });
+
+        // Download Plan PDF
+        document.getElementById('download-plan').addEventListener('click', () => {
+            // Add PDF generation and download logic here
+            alert('Your diet plan PDF will be downloaded');
+        });
+
+        const exercises = [
+            {
+                name: "PCOS Strength Circuit",
+                condition: "pcos",
+                video: "https://www.youtube.com/embed/VIDEO_ID1",
+                description: "A circuit to improve insulin sensitivity.",
+                difficulty: "beginner",
+                instructions: ["Squats - 12 reps", "Push-ups - 10 reps", "Rest 1 min", "Repeat 3x"]
+            },
+            {
+                name: "Endometriosis Gentle Yoga",
+                condition: "endometriosis",
+                video: "https://www.youtube.com/embed/VIDEO_ID2",
+                description: "Yoga for pelvic pain relief.",
+                difficulty: "beginner",
+                instructions: ["Child's Pose - 1 min", "Cat-Cow - 10 reps", "Rest", "Repeat 2x"]
+            },
+            // ...more exercises
+        ];
+
+        // Render cards based on selected condition, fitness level, and difficulty
+
+        function openVideoModal(videoUrl, instructions) {
+            document.getElementById('exercise-video').src = videoUrl;
+            document.getElementById('exercise-instructions').innerHTML = instructions.map(step => `<li>${step}</li>`).join('');
+            document.getElementById('video-modal').classList.remove('hidden');
+        }
+
+        // --- Daily Health Tips Data & Logic ---
+        const healthTips = [
+            {
+                icon: 'fas fa-tint',
+                title: 'Stay Hydrated',
+                text: 'Drink at least 8-10 glasses of water daily. Try infusing your water with lemon, cucumber, or berries for a refreshing twist!',
+                action: '<button class="btn btn-outline">Set Hydration Reminder</button>'
+            },
+            {
+                icon: 'fas fa-mug-hot',
+                title: 'Hydration Variety',
+                text: 'Herbal teas and coconut water are great alternatives to plain water. Avoid sugary drinks for better health.',
+                action: ''
+            },
+            {
+                icon: 'fas fa-brain',
+                title: 'Mindfulness Break',
+                text: 'Take 5 minutes to close your eyes and focus on your breath. Try the 4-7-8 breathing technique for instant calm.',
+                action: '<button class="btn btn-outline">Start Breathing Exercise</button>'
+            },
+            {
+                icon: 'fas fa-bed',
+                title: 'Sleep Hygiene',
+                text: 'Aim for 7-8 hours of sleep. Avoid screens 1 hour before bed and keep your room cool and dark.',
+                action: '<button class="btn btn-outline">View Sleep Tips</button>'
+            },
+            {
+                icon: 'fas fa-apple-alt',
+                title: 'Healthy Snack',
+                text: 'Swap chips for roasted chickpeas or fruit with nut butter. Balanced snacks keep your energy steady.',
+                action: ''
+            },
+            {
+                icon: 'fas fa-dumbbell',
+                title: 'Fitness Motivation',
+                text: '"The journey of a thousand miles begins with a single step." Stay active and celebrate your progress!',
+                action: ''
+            },
+            {
+                icon: 'fas fa-heart',
+                title: 'Self-Care Reminder',
+                text: 'Take a moment for yourself today—read, stretch, or simply breathe. Your well-being matters!',
+                action: ''
+            }
+        ];
+
+        let currentTip = 0;
+        function showTip(index) {
+            const tip = healthTips[index];
+            document.getElementById('tips-carousel').innerHTML = `
+                <div class="tip-card">
+                    <i class="${tip.icon}"></i>
+                    <h3>${tip.title}</h3>
+                    <p>${tip.text}</p>
+                    ${tip.action}
+                </div>
+            `;
+        }
+        document.getElementById('next-tip').addEventListener('click', () => {
+            currentTip = (currentTip + 1) % healthTips.length;
+            showTip(currentTip);
+        });
+        // Show first tip on load
+        showTip(currentTip);
+
+        // --- Gamified Rewards System ---
+        let userPoints = 250;
+        const userBadges = [
+            { name: 'Consistency Streak', icon: 'fas fa-medal', desc: '7 days of following your plan' },
+            { name: '5 Workouts', icon: 'fas fa-dumbbell', desc: '5 workouts in a row' },
+            { name: 'Hydration Hero', icon: 'fas fa-tint', desc: 'Met water goal for a week' }
+        ];
+        const challenges = [
+            { id: 1, text: 'Drink 8 cups of water today', type: 'daily', points: 10, completed: false },
+            { id: 2, text: 'Complete your workout', type: 'daily', points: 15, completed: false },
+            { id: 3, text: 'Follow your meal plan', type: 'daily', points: 10, completed: false },
+            { id: 4, text: 'Complete 5 workouts this week', type: 'weekly', points: 50, completed: false },
+            { id: 5, text: 'Drink 8 cups of water every day for a week', type: 'weekly', points: 40, completed: false }
+        ];
+        const leaderboard = [
+            { rank: 1, user: 'You', points: userPoints },
+            { rank: 2, user: 'Priya', points: 220 },
+            { rank: 3, user: 'Aisha', points: 200 },
+            { rank: 4, user: 'Meera', points: 180 },
+            { rank: 5, user: 'Sara', points: 150 }
+        ];
+
+        function renderPoints() {
+            document.getElementById('user-points').textContent = userPoints;
+        }
+        function renderChallenges() {
+            document.getElementById('challenges-list').innerHTML = challenges.map(ch => `
+                <li class="challenge-item ${ch.completed ? 'completed' : ''}">
+                    <input type="checkbox" id="challenge-${ch.id}" ${ch.completed ? 'checked' : ''}>
+                    <label for="challenge-${ch.id}">${ch.text} <span class="challenge-type">(${ch.type})</span> <span class="challenge-points">+${ch.points} pts</span></label>
+                </li>
+            `).join('');
+            // Add event listeners
+            challenges.forEach(ch => {
+                document.getElementById(`challenge-${ch.id}`).addEventListener('change', function() {
+                    if (!ch.completed) {
+                        ch.completed = true;
+                        userPoints += ch.points;
+                        renderPoints();
+                        renderChallenges();
+                        renderLeaderboard();
+                        // Optionally, unlock badges here
+                    }
+                });
+            });
+        }
+        function renderBadges() {
+            document.getElementById('badges-grid').innerHTML = userBadges.map(badge => `
+                <div class="badge-card">
+                    <i class="${badge.icon}"></i>
+                    <span class="badge-name">${badge.name}</span>
+                    <span class="badge-desc">${badge.desc}</span>
+                </div>
+            `).join('');
+        }
+        function renderLeaderboard() {
+            // Update your points in leaderboard
+            leaderboard[0].points = userPoints;
+            document.getElementById('leaderboard-body').innerHTML = leaderboard.map(row => `
+                <tr${row.user === 'You' ? ' class="highlight"' : ''}><td>${row.rank}</td><td>${row.user}</td><td>${row.points}</td></tr>
+            `).join('');
+        }
+        document.getElementById('claim-reward').addEventListener('click', () => {
+            if (userPoints >= 100) {
+                alert('Congratulations! You claimed a reward (e.g., discount or free consultation).');
+                userPoints -= 100;
+                renderPoints();
+                renderLeaderboard();
+            } else {
+                alert('You need at least 100 points to claim a reward.');
+            }
+        });
+        // Initial render
+        renderPoints();
+        renderChallenges();
+        renderBadges();
+        renderLeaderboard();
+    </script>
+</body>
+</html> 

@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Care</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style1.css">
+    <style>
+        /* Main page styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f3f8;
+            color: #333;
+        }
+
+        /* Hero Section Styles */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .hero-btn {
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .primary-btn {
+            background-color: #e84b8a;
+            color: white;
+        }
+
+        .primary-btn:hover {
+            background-color: #d13b7a;
+            transform: translateY(-2px);
+        }
+
+        .secondary-btn {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .secondary-btn:hover {
+            background-color: white;
+            color: #e84b8a;
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .category-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .category-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .category-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .category-content h3 {
+            color: #e84b8a;
+            margin-bottom: 0.5rem;
+        }
+        
+        .category-content p {
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        /* Videos Page Styles */
+        .videos-page {
+            display: none;
+        }
+        
+        .videos-page.active {
+            display: block;
+        }
+        
+        .back-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #e84b8a;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            margin: 3rem auto;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: fit-content;
+        }
+        
+        .back-button:hover {
+            background-color: #d13b7a;
+            transform: translateY(-2px);
+        }
+        
+        .back-button-container {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .video-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+        
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(232, 75, 138, 0.8);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .play-icon:before {
+            content: '';
+            border-style: solid;
+            border-width: 12px 0 12px 20px;
+            border-color: transparent transparent transparent white;
+            margin-left: 4px;
+        }
+        
+        .video-info {
+            padding: 1.5rem;
+        }
+        
+        .video-info h3 {
+            color: #e84b8a;
+            margin-bottom: 0.5rem;
+        }
+        
+        .video-info p {
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        /* Video Popup Styles */
+        .video-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .video-popup.active {
+            display: flex;
+        }
+        
+        .video-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 800px;
+            position: relative;
+        }
+        
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #e84b8a;
+        }
+        
+        .video-player {
+            width: 100%;
+            aspect-ratio: 16/9;
+            margin-top: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Section Spacing */
+        .main-content {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin: 4rem 0;
+            padding: 0 2rem;
+        }
+
+        .videos-page {
+            padding: 4rem 0;
+        }
+
+        .videos-page .container {
+            padding: 0 2rem;
+        }
+
+        .back-button {
+            margin: 2rem 0;
+        }
+
+        .videos-grid {
+            margin-top: 3rem;
+            gap: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 2rem 0;
+            }
+
+            .section-title {
+                margin-bottom: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .categories-grid {
+                gap: 2rem;
+                padding: 0 1rem;
+            }
+
+            .videos-page {
+                padding: 2rem 0;
+            }
+
+            .videos-page .container {
+                padding: 0 1rem;
+            }
+        }
+
+        /* Add new section styles */
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section h3 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: #e84b8a;
+        }
+
+        .section .categories-grid {
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                margin-bottom: 3rem;
+            }
+
+            .section h3 {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="https://storage.googleapis.com/a1aa/image/D7CxMwbcUe28f09Jq1qqpiFDwQtaX6FerH4ePwd7LdyOglNQB.jpg" alt="Women's Care Logo">
+            <span>Women's Care</span>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="home.html.html">Home</a></li>
+                <li><a href="doctor.html">Doctors</a></li>
+                <li><a href="medical.html">Medical Store</a></li>
+                <li><a href="select.html">Diet Plans</a></li>
+                <li><a href="checker.html.html">Symptom Checker</a></li>
+            </ul>
+            <div class="cta-buttons">
+                <a href="dash.html" class="get-started">Dash Board</a>
+            </div>
+        </nav>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Exercise & Fitness</h1>
+            <p>Discover personalized workout routines and fitness tips for women's health</p>
+            <div class="hero-buttons">
+                <a href="#main-page" class="hero-btn primary-btn">Get Started</a>
+                <a href="#main-page" class="hero-btn secondary-btn">Watch Videos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Page -->
+    <div id="main-page" class="main-content">
+        <div class="container">
+            <!-- Main Title Section -->
+            <div class="section-title">
+                <h2>Explore Fitness Categories</h2>
+                <p>Choose from our curated selection of exercise and wellness videos</p>
+            </div>
+
+            <!-- Exercise Programs Section -->
+            <div class="section">
+                <h3>Exercise Programs</h3>
+                <div class="categories-grid">
+                    <div class="category-card" onclick="showVideosPage('weightloss')">
+                        <img src="Weightloss.jpg" alt="Weight Loss" class="category-image">
+                        <div class="category-content">
+                            <h3>Weight Loss & Fat Burning</h3>
+                            <p>Burn calories and improve metabolism</p>
+                        </div>
+                    </div>
+                    <div class="category-card" onclick="showVideosPage('strength')">
+                        <img src="muscle.jpg" alt="Strength Training" class="category-image">
+                        <div class="category-content">
+                            <h3>Strength & Muscle Toning</h3>
+                            <p>Build lean muscle and improve strength</p>
+                        </div>
+                    </div>
+                    <div class="category-card" onclick="showVideosPage('flexibility')">
+                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Flexibility" class="category-image">
+                        <div class="category-content">
+                            <h3>Flexibility & Mobility</h3>
+                            <p>Enhance range of motion and prevent injuries</p>
+                        </div>
+                    </div>
+                    <div class="category-card" onclick="showVideosPage('cardio')">
+                        <img src="heart.jpg" alt="Cardio Health" class="category-image">
+                        <div class="category-content">
+                            <h3>Cardiovascular Health</h3>
+                            <p>Improve heart and lung health</p>
+                        </div>
+                    </div>
+                    <div class="category-card" onclick="showVideosPage('core')">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Core Strength" class="category-image">
+                        <div class="category-content">
+                            <h3>Core Strength & Stability</h3>
+                            <p>Strengthen core muscles and improve posture</p>
+                        </div>
+                    </div>
+                    <div class="category-card" onclick="showVideosPage('pregnancy')">
+                        <img src="pranency.jpg" alt="Pregnancy Fitness" class="category-image">
+                        <div class="category-content">
+                            <h3>Pregnancy Fitness</h3>
+                            <p>Safe exercises during pregnancy</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Videos Page -->
+    <div id="videos-page" class="videos-page">
+        <div class="container">
+            <div class="section-title">
+                <h2>Fitness Videos</h2>
+                <p>Watch and learn from our expert-led video tutorials</p>
+            </div>
+            <div class="videos-grid" id="videos-grid"></div>
+            <div class="back-button-container">
+                <a href="#" class="back-button" onclick="showMainPage()">← Back to Categories</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Popup -->
+    <div class="video-popup" id="videoPopup">
+        <div class="video-container">
+            <button class="close-button" onclick="closePopup()">&times;</button>
+            <h2 id="popupTitle"></h2>
+            <iframe id="videoPlayer" class="video-player" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-section">
+                <div class="logo">
+                    <img src="https://storage.googleapis.com/a1aa/image/D7CxMwbcUe28f09Jq1qqpiFDwQtaX6FerH4ePwd7LdyOglNQB.jpg" alt="Women's Care Logo">
+                    <span>Women's Care</span>
+                </div>
+                <p>Empowering women's health through comprehensive care and support.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <div class="quick-links">
+                    <a href="home.html.html">Home</a>
+                    <a href="doctor.html">Find a Doctor</a>
+                    <a href="medical.html">Medical Store</a>
+                    <a href="select.html">Diet Plans</a>
+                    <a href="checker.html.html">Symptom Checker</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>support@womenscare.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>123 Health Street, Medical City</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive health tips and updates.</p>
+                <div class="newsletter">
+                    <form>
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            <p>&copy; 2024 Women's Care. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script>
+        const videoData = {
+            weightloss: [
+                { 
+                    title: "HIIT Fat Burning Workout", 
+                    url: "https://youtu.be/pS8d2zIsmcU?si=JtaoyPkt_AANv9kd",
+                    description: "High-intensity interval training for maximum fat burn",
+                    thumbnail: "https://img.youtube.com/vi/pS8d2zIsmcU/maxresdefault.jpg"
+                },
+                { 
+                    title: "Cardio Blast", 
+                    url: "https://youtu.be/Zd_-l08p7vg?si=GTI3h4jYxuj6nDYe",
+                    description: "Effective cardio exercises for weight loss",
+                    thumbnail: "https://img.youtube.com/vi/Zd_-l08p7vg/maxresdefault.jpg"
+                },
+                { 
+                    title: "Full Body Fat Burn", 
+                    url: "https://youtu.be/qJiSylb3a9s?si=NR8Lo_o0S4iHFyt_",
+                    description: "Complete workout to burn calories and fat",
+                    thumbnail: "https://img.youtube.com/vi/qJiSylb3a9s/maxresdefault.jpg"
+                },
+                { 
+                    title: "Metabolism Boost", 
+                    url: "https://youtu.be/XkgHNXjbNgM?si=ggpjykWhKO01OKgQ",
+                    description: "Exercises to boost your metabolism",
+                    thumbnail: "https://img.youtube.com/vi/XkgHNXjbNgM/maxresdefault.jpg"
+                },
+                { 
+                    title: "Weight Loss Circuit", 
+                    url: "https://youtu.be/Nc_NZ3PXhE8?si=KfxjLfQv6TnHlfUf",
+                    description: "Circuit training for effective weight loss",
+                    thumbnail: "https://img.youtube.com/vi/Nc_NZ3PXhE8/maxresdefault.jpg"
+                },
+                { 
+                    title: "Fat Burning HIIT", 
+                    url: "https://youtu.be/W2zz6SKVc5Q?si=p4g--Y6V38PSWfYB",
+                    description: "High-intensity interval training for fat loss",
+                    thumbnail: "https://img.youtube.com/vi/W2zz6SKVc5Q/maxresdefault.jpg"
+                }
+            ],
+            strength: [
+                { 
+                    title: "Full Body Strength", 
+                    url: "https://youtu.be/oqCxFImX-t4?si=begoa00o2VLT3DP5",
+                    description: "Complete body strength training workout",
+                    thumbnail: "https://img.youtube.com/vi/oqCxFImX-t4/maxresdefault.jpg"
+                },
+                { 
+                    title: "Upper Body Power", 
+                    url: "https://youtu.be/BWY5_aQxeUo?si=5qPFkgUNvoa72ysi",
+                    description: "Build upper body strength and muscle tone",
+                    thumbnail: "https://img.youtube.com/vi/BWY5_aQxeUo/maxresdefault.jpg"
+                },
+                { 
+                    title: "Lower Body Strength", 
+                    url: "https://youtu.be/BdpJYFr6ygQ?si=MYWUvvC2lx2CSNUN",
+                    description: "Targeted lower body strength exercises",
+                    thumbnail: "https://img.youtube.com/vi/BdpJYFr6ygQ/maxresdefault.jpg"
+                },
+                { 
+                    title: "Core Strength Training", 
+                    url: "https://youtu.be/lA-diBuGy6I?si=lbnJHr4pbutV_w3h",
+                    description: "Build core strength and stability",
+                    thumbnail: "https://img.youtube.com/vi/lA-diBuGy6I/maxresdefault.jpg"
+                },
+                { 
+                    title: "Muscle Toning Workout", 
+                    url: "https://youtu.be/JQt4O3ZTvYQ?si=w5GLz85hBY1r06jd",
+                    description: "Effective exercises for muscle definition",
+                    thumbnail: "https://img.youtube.com/vi/JQt4O3ZTvYQ/maxresdefault.jpg"
+                }
+            ],
+            flexibility: [
+                { 
+                    title: "Full Body Flexibility", 
+                    url: "https://youtu.be/fPaF3oro6hE?si=tsIZChYSFsDNJk_1",
+                    description: "Complete flexibility routine for full body mobility",
+                    thumbnail: "https://img.youtube.com/vi/fPaF3oro6hE/maxresdefault.jpg"
+                },
+                { 
+                    title: "Dynamic Mobility", 
+                    url: "https://youtu.be/XSW-pBo-CNY?si=UDtZsfgOC7x7Dko_",
+                    description: "Dynamic stretches to improve mobility and prevent injuries",
+                    thumbnail: "https://img.youtube.com/vi/XSW-pBo-CNY/maxresdefault.jpg"
+                },
+                { 
+                    title: "Yoga for Flexibility", 
+                    url: "https://youtu.be/L_xrDAtykMI",
+                    description: "Yoga poses to improve flexibility",
+                    thumbnail: "https://img.youtube.com/vi/L_xrDAtykMI/maxresdefault.jpg"
+                },
+                { 
+                    title: "Dynamic Stretching", 
+                    url: "https://youtu.be/inpok4MKVLM",
+                    description: "Dynamic stretches for better mobility",
+                    thumbnail: "https://img.youtube.com/vi/inpok4MKVLM/maxresdefault.jpg"
+                },
+                { 
+                    title: "Tai Chi Basics", 
+                    url: "https://youtu.be/hJbRpHZr_d0",
+                    description: "Gentle movements for flexibility and balance",
+                    thumbnail: "https://img.youtube.com/vi/hJbRpHZr_d0/maxresdefault.jpg"
+                }
+            ],
+            cardio: [
+                { 
+                    title: "HIIT Cardio Blast", 
+                    url: "https://youtu.be/XWLjcwiayrE?si=f9eXvQZg5LEhov_V",
+                    description: "High-intensity interval training for cardiovascular health",
+                    thumbnail: "https://img.youtube.com/vi/XWLjcwiayrE/maxresdefault.jpg"
+                },
+                { 
+                    title: "Cardio Endurance", 
+                    url: "https://youtu.be/J1DUQFL-VHw?si=zJt9YywhHcHmmXOH",
+                    description: "Build endurance and improve heart health",
+                    thumbnail: "https://img.youtube.com/vi/J1DUQFL-VHw/maxresdefault.jpg"
+                },
+                { 
+                    title: "Heart Health Workout", 
+                    url: "https://youtu.be/PxExR7Yj5d4?si=qi1Xy5D4RwDHiCjb",
+                    description: "Effective exercises for cardiovascular fitness",
+                    thumbnail: "https://img.youtube.com/vi/PxExR7Yj5d4/maxresdefault.jpg"
+                },
+                { 
+                    title: "Cardio Workout", 
+                    url: "https://youtu.be/2t5T7ECn5rQ",
+                    description: "Effective cardio exercises for heart health",
+                    thumbnail: "https://img.youtube.com/vi/2t5T7ECn5rQ/maxresdefault.jpg"
+                },
+                { 
+                    title: "HIIT Cardio", 
+                    url: "https://youtu.be/l4kQd9eWclE",
+                    description: "High-intensity interval training for cardio",
+                    thumbnail: "https://img.youtube.com/vi/l4kQd9eWclE/maxresdefault.jpg"
+                }
+            ],
+            core: [
+                { 
+                    title: "Core Power Workout", 
+                    url: "https://youtu.be/8T39OBNaNzU?si=o6dwwSIyGwQ7CQBY",
+                    description: "Intensive core strengthening exercises for better stability",
+                    thumbnail: "https://img.youtube.com/vi/8T39OBNaNzU/maxresdefault.jpg"
+                },
+                { 
+                    title: "Posture Perfect", 
+                    url: "https://youtu.be/pHDVePftRL4?si=tJfVT25SPofPRcdE",
+                    description: "Exercises to improve posture and core stability",
+                    thumbnail: "https://img.youtube.com/vi/pHDVePftRL4/maxresdefault.jpg"
+                },
+                { 
+                    title: "Core Strength Basics", 
+                    url: "https://youtu.be/0UHpq7C6hJ0",
+                    description: "Fundamental core strengthening exercises",
+                    thumbnail: "https://img.youtube.com/vi/0UHpq7C6hJ0/maxresdefault.jpg"
+                },
+                { 
+                    title: "Plank Variations", 
+                    url: "https://youtu.be/0UHpq7C6hJ0",
+                    description: "Different plank exercises for core strength",
+                    thumbnail: "https://img.youtube.com/vi/0UHpq7C6hJ0/maxresdefault.jpg"
+                },
+                { 
+                    title: "Ab Workout", 
+                    url: "https://youtu.be/0UHpq7C6hJ0",
+                    description: "Targeted abdominal exercises",
+                    thumbnail: "https://img.youtube.com/vi/0UHpq7C6hJ0/maxresdefault.jpg"
+                }
+            ],
+            pregnancy: [
+                { 
+                    title: "Pregnancy Exercise Guide", 
+                    url: "https://youtu.be/aCx0Pgb8X0Q?si=-hV-WHblBayWwZGt",
+                    description: "Safe and effective exercises for expecting mothers",
+                    thumbnail: "https://img.youtube.com/vi/aCx0Pgb8X0Q/maxresdefault.jpg"
+                },
+                { 
+                    title: "Prenatal Fitness", 
+                    url: "https://youtu.be/_dVuHFdUN0c?si=Mzm0XwqBpHj-3BhU",
+                    description: "Complete prenatal workout routine",
+                    thumbnail: "https://img.youtube.com/vi/_dVuHFdUN0c/maxresdefault.jpg"
+                },
+                { 
+                    title: "Pregnancy Wellness", 
+                    url: "https://youtu.be/KP21sU8GNFw?si=pftBTGeTDaqQfTot",
+                    description: "Wellness exercises for a healthy pregnancy",
+                    thumbnail: "https://img.youtube.com/vi/KP21sU8GNFw/maxresdefault.jpg"
+                },
+                { 
+                    title: "Prenatal Yoga", 
+                    url: "https://youtu.be/ymigWt5TOV8",
+                    description: "Safe yoga for expecting mothers",
+                    thumbnail: "https://img.youtube.com/vi/ymigWt5TOV8/maxresdefault.jpg"
+                },
+                { 
+                    title: "Pregnancy Exercise", 
+                    url: "https://youtu.be/RcTv7mgXrhs",
+                    description: "Safe exercises during pregnancy",
+                    thumbnail: "https://img.youtube.com/vi/RcTv7mgXrhs/maxresdefault.jpg"
+                }
+            ],
+            bone: [
+                { 
+                    title: "Weight-Bearing Exercises", 
+                    url: "https://youtu.be/0UHpq7C6hJ0",
+                    description: "Exercises to improve bone density",
+                    thumbnail: "https://img.youtube.com/vi/0UHpq7C6hJ0/maxresdefault.jpg"
+                },
+                { 
+                    title: "Bone Strength Workout", 
+                    url: "https://youtu.be/0UHpq7C6hJ0",
+                    description: "Strength training for bone health",
+                    thumbnail: "https://img.youtube.com/vi/0UHpq7C6hJ0/maxresdefault.jpg"
+                },
+                { 
+                    title: "Balance Exercises", 
+                    url: "https://youtu.be/0UHpq7C6hJ0",
+                    description: "Improve balance and prevent falls",
+                    thumbnail: "https://img.youtube.com/vi/0UHpq7C6hJ0/maxresdefault.jpg"
+                }
+            ],
+            reproductive: [
+                { 
+                    title: "Menstrual Health Guide", 
+                    url: "https://youtu.be/example1",
+                    description: "Understanding and managing menstrual cycles",
+                    thumbnail: "https://img.youtube.com/vi/example1/maxresdefault.jpg"
+                },
+                { 
+                    title: "Fertility Awareness", 
+                    url: "https://youtu.be/example2",
+                    description: "Learn about ovulation and fertility cycles",
+                    thumbnail: "https://img.youtube.com/vi/example2/maxresdefault.jpg"
+                },
+                { 
+                    title: "Pregnancy Care", 
+                    url: "https://youtu.be/example3",
+                    description: "Essential care during pregnancy",
+                    thumbnail: "https://img.youtube.com/vi/example3/maxresdefault.jpg"
+                }
+            ],
+            preventative: [
+                { 
+                    title: "Health Screenings", 
+                    url: "https://youtu.be/example34",
+                    description: "Important regular check-ups",
+                    thumbnail: "https://img.youtube.com/vi/example34/maxresdefault.jpg"
+                },
+                { 
+                    title: "Cancer Prevention", 
+                    url: "https://youtu.be/example35",
+                    description: "Preventative measures",
+                    thumbnail: "https://img.youtube.com/vi/example35/maxresdefault.jpg"
+                },
+                { 
+                    title: "Vaccination Guide", 
+                    url: "https://youtu.be/example36",
+                    description: "Understanding vaccinations",
+                    thumbnail: "https://img.youtube.com/vi/example36/maxresdefault.jpg"
+                }
+            ]
+        };
+
+        function showVideosPage(category) {
+            document.getElementById('main-page').style.display = 'none';
+            document.getElementById('videos-page').classList.add('active');
+            
+            const videosGrid = document.getElementById('videos-grid');
+            videosGrid.innerHTML = '';
+
+            videoData[category].forEach(video => {
+                const videoCard = document.createElement('div');
+                videoCard.className = 'video-card';
+                videoCard.innerHTML = `
+                    <div class="video-thumbnail" onclick="playVideo('${video.url}', '${video.title}', '${video.description}')">
+                        <img src="${video.thumbnail}" alt="${video.title}" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="play-icon"></div>
+                    </div>
+                    <div class="video-info">
+                        <h3>${video.title}</h3>
+                        <p>${video.description}</p>
+                    </div>
+                `;
+                videosGrid.appendChild(videoCard);
+            });
+        }
+
+        function showMainPage() {
+            document.getElementById('videos-page').classList.remove('active');
+            document.getElementById('main-page').style.display = 'block';
+        }
+
+        function playVideo(url, title, description) {
+            const popup = document.getElementById('videoPopup');
+            const videoPlayer = document.getElementById('videoPlayer');
+            const popupTitle = document.getElementById('popupTitle');
+            
+            const videoId = url.split('?')[0].split('/').pop();
+            videoPlayer.src = `https://www.youtube.com/embed/${videoId}`;
+            popupTitle.textContent = title;
+            
+            popup.classList.add('active');
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('videoPopup');
+            const videoPlayer = document.getElementById('videoPlayer');
+            popup.classList.remove('active');
+            videoPlayer.src = '';
+        }
+    </script>
+</body>
+</html>

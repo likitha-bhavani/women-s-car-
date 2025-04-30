@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine & Supplement Store - Women's Care</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style1.css">
+    <style>
+        /* Medical Store Styles */
+        :root {
+            --primary-color: #ff66b2;
+            --primary-dark: #ff3399;
+            --primary-light: #ff99cc;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --background-light: #ffe6f2;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Store Hero Section */
+        .store-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://storage.googleapis.com/a1aa/image/niCU0qEfoEVhe0amtzKskQUlx36zkDbmTSPu15Gmy3QySZDUA.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 20px;
+            text-align: center;
+            color: var(--text-light);
+            margin-top: 80px;
+        }
+
+        .store-hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .store-hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-container input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-container button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .search-container button:hover {
+            background-color: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 40px 20px;
+            background-color: white;
+        }
+
+        .categories h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: var(--text-dark);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .categories h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 3px;
+        }
+
+        .category-filters {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .filter-group {
+            text-align: center;
+        }
+
+        .filter-group h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .filter-options button {
+            padding: 10px 20px;
+            border: 2px solid var(--primary-color);
+            border-radius: 25px;
+            background-color: transparent;
+            color: var(--primary-color);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-options button:hover,
+        .filter-options button.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            padding: 40px 20px;
+            background-color: var(--background-light);
+        }
+
+        .products-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            justify-content: flex-start;
+        }
+
+        .product-card {
+            flex: 0 1 320px;
+            margin-bottom: 30px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .prescription-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(255, 51, 153, 0.9);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .product-info .description {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .add-to-cart:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Prescription Upload Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 15px;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #aaa;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--text-dark);
+        }
+
+        .upload-area {
+            border: 2px dashed #ddd;
+            border-radius: 10px;
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .upload-area:hover {
+            border-color: var(--primary-color);
+        }
+
+        .upload-area i {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .upload-area p {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .upload-area span {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h3 {
+            font-size: 20px;
+            color: var(--text-dark);
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #aaa;
+            transition: var(--transition);
+        }
+
+        .close-cart:hover {
+            color: var(--text-dark);
+        }
+
+        .cart-items {
+            padding: 20px;
+            max-height: calc(100vh - 250px);
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-details h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+
+        .cart-item-price {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            background-color: white;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .quantity-btn:hover {
+            background-color: var(--primary-light);
+            color: white;
+        }
+
+        .quantity-input {
+            width: 40px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        .remove-item {
+            color: #ff4444;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .remove-item:hover {
+            color: #cc0000;
+        }
+
+        .cart-summary {
+            padding: 20px;
+            border-top: 1px solid #eee;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: white;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .summary-item.total {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 500;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .checkout-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Order Tracking Section */
+        .order-tracking {
+            padding: 40px 20px;
+            background-color: white;
+        }
+
+        .order-tracking h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: var(--text-dark);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .order-tracking h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 3px;
+        }
+
+        .tracking-form {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .tracking-form input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .tracking-form button {
+            padding: 15px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .tracking-form button:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .tracking-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .tracking-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background-color: #ddd;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .status-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            z-index: 1;
+        }
+
+        .timeline-item.active .status-icon {
+            background-color: var(--primary-color);
+        }
+
+        .status-info {
+            flex: 1;
+            padding: 0 30px;
+        }
+
+        .status-info h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+
+        .status-info p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Refill Reminders Section */
+        .refill-reminders {
+            padding: 40px 20px;
+            background-color: var(--background-light);
+        }
+
+        .refill-reminders h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: var(--text-dark);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .refill-reminders h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 3px;
+        }
+
+        .reminders-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .reminder-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .reminder-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .reminder-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .reminder-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .reminder-date {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .reminder-details {
+            margin-bottom: 20px;
+        }
+
+        .reminder-details p {
+            color: #666;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .reminder-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .reminder-actions button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .refill-now {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .refill-now:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .snooze-reminder {
+            background-color: #f0f0f0;
+            color: var(--text-dark);
+        }
+
+        .snooze-reminder:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .store-hero {
+                padding: 60px 20px;
+            }
+
+            .store-hero h1 {
+                font-size: 36px;
+            }
+
+            .store-hero p {
+                font-size: 18px;
+            }
+
+            .search-container {
+                flex-direction: column;
+            }
+
+            .search-container button {
+                width: 100%;
+                height: 50px;
+                border-radius: 5px;
+            }
+
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+
+            .tracking-timeline::before {
+                left: 25px;
+            }
+
+            .timeline-item {
+                flex-direction: row !important;
+            }
+
+            .status-info {
+                padding-left: 60px;
+                padding-right: 0;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .products-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .products-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Skeleton Animation */
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+            100% {
+                background-position: 1000px 0;
+            }
+        }
+
+        .skeleton {
+            background: linear-gradient(to right, #f0f0f0 0%, #e0e0e0 50%, #f0f0f0 100%);
+            background-size: 1000px 100%;
+            animation: shimmer 2s infinite linear;
+        }
+
+        .skeleton-image {
+            height: 200px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .skeleton-text {
+            height: 20px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .skeleton-text.short {
+            width: 60%;
+        }
+
+        .skeleton-text.medium {
+            width: 80%;
+        }
+
+        .skeleton-text.long {
+            width: 100%;
+        }
+
+        .skeleton-price {
+            height: 30px;
+            width: 40%;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        .skeleton-button {
+            height: 40px;
+            width: 100%;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="https://storage.googleapis.com/a1aa/image/D7CxMwbcUe28f09Jq1qqpiFDwQtaX6FerH4ePwd7LdyOglNQB.jpg" alt="Women's Care Logo">
+            <span>Women's Care</span>
+        </div>
+        <nav>
+            <ul class="nav-links">
+             <li><a href="home.html.html">Home</a></li>
+                <li><a href="doctor.html">Doctors</a></li>
+                <li><a href="medical.html">Medical Store</a></li>
+                <li><a href="select.html">Diet Plans</a></li>
+                <li><a href="checker.html.html">Symptom Checker</a></li>
+                
+            </ul>
+           <div class="cta-buttons">
+                <a href="dash.html" class="get-started">Dash Board</a>
+            </div>
+        </nav>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="store-hero">
+            <div class="hero-content">
+                <h1>Your Health, Our Priority</h1>
+                <p>Quality medicines and supplements for women's health and wellness</p>
+                <div class="search-container">
+                    <input type="text" id="search-products" placeholder="Search medicines, supplements, or health conditions...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="categories">
+            <h2>Shop by Category</h2>
+            <div class="category-filters">
+                <div class="filter-group">
+                    <h3>Health Concern</h3>
+                    <div class="filter-options">
+                        <button class="active" data-category="all">All</button>
+                        <button data-category="pcos">PCOS</button>
+                        <button data-category="endometriosis">Endometriosis</button>
+                        <button data-category="hormonal">Hormonal Balance</button>
+                        <button data-category="menstrual">Menstrual Health</button>
+                        <button data-category="wellness">General Wellness</button>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <h3>Product Type</h3>
+                    <div class="filter-options">
+                        <button class="active" data-type="all">All</button>
+                        <button data-type="prescription">Prescription Medicine</button>
+                        <button data-type="supplement">Supplements</button>
+                        <button data-type="herbal">Herbal Remedies</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Grid -->
+        <section class="products-grid">
+            <h2 style="text-align:center;color:#ff66b2;">Women's Medicines & Supplements</h2>
+            <p style="text-align:center;max-width:700px;margin:0 auto 30px;color:#555;">
+                Explore our curated selection of medicines and supplements designed specifically for women's health needs, including PCOS, hormonal balance, menstrual wellness, fertility, and more.
+            </p>
+            <div id="filter-bar"></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto 20px;flex-wrap:wrap;gap:10px;">
+                <input type="text" id="search-products" placeholder="Search by name, brand, or health issue..." style="flex:1;min-width:220px;padding:10px 16px;border-radius:20px;border:1px solid #eee;font-size:16px;">
+                <select id="sort-products" style="padding:10px 16px;border-radius:20px;border:1px solid #eee;font-size:16px;">
+                    <option value="default">Sort By</option>
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                    <option value="popularity">Popularity</option>
+                    <option value="new">New Arrivals</option>
+                </select>
+            </div>
+            <div id="products-container" class="products-container">
+                <!-- Product cards will be rendered here by JS -->
+            </div>
+        </section>
+
+        <!-- Prescription Upload Modal -->
+        <div class="modal" id="prescription-modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Upload Prescription</h2>
+                <form id="prescription-form">
+                    <div class="upload-area">
+                        <input type="file" id="prescription-file" accept="image/*,.pdf" hidden>
+                        <div class="upload-placeholder">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop your prescription here or click to browse</p>
+                            <span>Supported formats: JPG, PNG, PDF</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="prescription-notes">Additional Notes (Optional)</label>
+                        <textarea id="prescription-notes" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit Prescription</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Cart Sidebar -->
+        <div class="cart-sidebar" id="cart-sidebar">
+            <div class="cart-header">
+                <h3>Your Cart</h3>
+                <button class="close-cart">&times;</button>
+            </div>
+            <div class="cart-items">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+            <div class="cart-summary">
+                <div class="summary-item">
+                    <span>Subtotal</span>
+                    <span class="subtotal">₹0.00</span>
+                </div>
+                <div class="summary-item">
+                    <span>Shipping</span>
+                    <span class="shipping">₹0.00</span>
+                </div>
+                <div class="summary-item total">
+                    <span>Total</span>
+                    <span class="total-amount">₹0.00</span>
+                </div>
+                <button class="checkout-btn">Proceed to Checkout</button>
+            </div>
+        </div>
+
+        <!-- Order Tracking Section -->
+        <section class="order-tracking" id="order-tracking">
+            <h2>Track Your Order</h2>
+            <div class="tracking-form">
+                <input type="text" id="order-id" placeholder="Enter your Order ID">
+                <button id="track-order">Track</button>
+            </div>
+            <div class="tracking-timeline hidden">
+                <div class="timeline-item active">
+                    <div class="status-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="status-info">
+                        <h4>Order Placed</h4>
+                        <p>Your order has been confirmed</p>
+                    </div>
+                </div>
+                <!-- More timeline items will be added dynamically -->
+            </div>
+        </section>
+
+        <!-- Refill Reminders Section -->
+        <section class="refill-reminders">
+            <h2>Refill Reminders</h2>
+            <div class="reminders-container">
+                <!-- Reminder cards will be dynamically added here -->
+            </div>
+        </section>
+
+        <!-- Product Detail Modal -->
+        <div id="product-detail-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div>
+                        <img id="detail-main-img" src="" class="w-64 h-64 object-cover rounded mb-2">
+                        <div id="detail-gallery" class="flex gap-2"></div>
+                    </div>
+                    <div>
+                        <h2 id="detail-name" class="text-2xl font-bold"></h2>
+                        <div id="detail-dosage" class="mb-2"></div>
+                        <div id="detail-price" class="text-pink-600 font-bold text-xl mb-2"></div>
+                        <div id="detail-description" class="mb-2"></div>
+                        <div id="detail-ingredients" class="mb-2"></div>
+                        <div id="detail-usage" class="mb-2"></div>
+                        <div id="detail-warnings" class="mb-2"></div>
+                        <div id="detail-reviews" class="mb-2"></div>
+                        <button id="detail-add-to-cart" class="bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600">Add to Cart</button>
+                        <button id="detail-upload-prescription" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 hidden">Upload Prescription</button>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="mt-6 mb-2 font-bold">Related Products</h3>
+                    <div id="related-products-carousel" class="flex gap-4 overflow-x-auto"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-section">
+                <div class="logo">
+                    <img src="https://storage.googleapis.com/a1aa/image/D7CxMwbcUe28f09Jq1qqpiFDwQtaX6FerH4ePwd7LdyOglNQB.jpg" alt="Women's Care Logo">
+                    <span>Women's Care</span>
+                </div>
+                <p>Empowering women's health through comprehensive care and support.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <div class="quick-links">
+                    <a href="home.html.html">Home</a>
+                    <a href="doctor.html">Find a Doctor</a>
+                    <a href="medical.html">Medical Store</a>
+                    <a href="select.html">Diet Plans</a>
+                    <a href="checker.html.html">Symptom Checker</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>support@womenscare.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>123 Health Street, Medical City</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive health tips and updates.</p>
+                <div class="newsletter">
+                    <form>
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            <p>&copy; 2024 Women's Care. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+    <!-- Scripts -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="products-data.js"></script>
+    <script src="medical.js"></script>
+    <script>
+    let products = [
+      {
+        _id: "1",
+        name: "Women's Multivitamin",
+        dosage: "30 Tablets",
+        image: "Women's Multivitami.jpg",
+        images: ["Women's Multivitami.jpg"],
+        oldPrice: 600,
+        price: 540,
+        discountPercent: 10,
+        rating: 4.8,
+        reviewCount: 300,
+        requiresPrescription: false,
+        description: "Complete daily multivitamin for women's overall health, energy, and immunity.",
+        brand: "Wellwoman",
+        category: "Multivitamin",
+        ingredients: ["Vitamin A", "Vitamin C", "Vitamin D", "Vitamin E", "B Vitamins", "Iron", "Zinc"],
+        usage: "Take 1 tablet daily after a meal.",
+        warnings: "Consult your doctor if pregnant or breastfeeding.",
+        reviews: [
+          { user: "Asha", rating: 5, comment: "Great for daily energy!" },
+          { user: "Priya", rating: 4, comment: "Helped improve my immunity." }
+        ]
+      },
+      {
+        _id: "2",
+        name: "Metformin",
+        dosage: "500mg",
+        image: "Metformin.jpg",
+        oldPrice: 250,
+        price: 200,
+        discountPercent: 20,
+        rating: 4.5,
+        reviewCount: 120,
+        requiresPrescription: true,
+        description: "Prescription medicine for PCOS and blood sugar management in women.",
+        brand: "Glycomet",
+        category: "Prescription"
+      },
+      {
+        _id: "3",
+        name: "Myo-Inositol",
+        dosage: "600mg",
+        image: "Myo-Inosito.jpg",
+        oldPrice: 900,
+        price: 750,
+        discountPercent: 17,
+        rating: 4.7,
+        reviewCount: 210,
+        requiresPrescription: false,
+        description: "Supports hormonal balance, ovarian function, and menstrual health.",
+        brand: "Fairhaven Health",
+        category: "Supplement"
+      },
+      {
+        _id: "4",
+        name: "PCOS Balance Capsules",
+        dosage: "60 Capsules",
+        image: "pcos.jpg",
+        oldPrice: 800,
+        price: 699,
+        discountPercent: 13,
+        rating: 4.6,
+        reviewCount: 180,
+        requiresPrescription: false,
+        description: "Herbal blend to help manage PCOS symptoms and support hormone balance.",
+        brand: "Bodywise",
+        category: "PCOS"
+      },
+      {
+        _id: "5",
+        name: "Slow PCOS Balance",
+        dosage: "60 Capsules",
+        image: "slowpcos.jpg",
+        oldPrice: 950,
+        price: 850,
+        discountPercent: 11,
+        rating: 4.4,
+        reviewCount: 95,
+        requiresPrescription: false,
+        description: "Time-release nutrition for PCOS, with Myo-Inositol and D-Chiro Inositol.",
+        brand: "Wellbeing Nutrition",
+        category: "PCOS"
+      },
+      {
+        _id: "6",
+        name: "Wellwoman Capsules",
+        dosage: "30 Capsules",
+        image: "wellwomen.jpg",
+        oldPrice: 700,
+        price: 630,
+        discountPercent: 10,
+        rating: 4.5,
+        reviewCount: 110,
+        requiresPrescription: false,
+        description: "Advanced vitamin and mineral formula for women's vitality and wellbeing.",
+        brand: "Wellwoman",
+        category: "Multivitamin"
+      },
+      {
+        _id: "7",
+        name: "Centrum Women",
+        dosage: "50 Tablets",
+        image: "centrum.jpg",
+        oldPrice: 650,
+        price: 590,
+        discountPercent: 9,
+        rating: 4.7,
+        reviewCount: 220,
+        requiresPrescription: false,
+        description: "Supports overall health, radiance, strong bones, and immunity for women.",
+        brand: "Centrum",
+        category: "Multivitamin"
+      },
+      {
+        _id: "8",
+        name: "OZiva HerBalance for PCOS",
+        dosage: "250g",
+        image: "herbalance.jpg",
+        oldPrice: 899,
+        price: 799,
+        discountPercent: 11,
+        rating: 4.6,
+        reviewCount: 160,
+        requiresPrescription: false,
+        description: "Plant-based supplement for better cycle and hormonal balance in women.",
+        brand: "OZiva",
+        category: "PCOS"
+      },
+      {
+        _id: "9",
+        name: "Iron & Folic Acid Tablets",
+        dosage: "60 Tablets",
+        image: "ironfolic.jpg",
+        oldPrice: 350,
+        price: 299,
+        discountPercent: 15,
+        rating: 4.5,
+        reviewCount: 140,
+        requiresPrescription: false,
+        description: "Essential for pregnancy, anemia prevention, and women's reproductive health.",
+        brand: "HealthKart",
+        category: "Supplement"
+      },
+      {
+        _id: "11",
+        name: "Calcium + Vitamin D3",
+        dosage: "60 Tablets",
+        image: "calciumd3.jpg",
+        oldPrice: 400,
+        price: 350,
+        discountPercent: 12,
+        rating: 4.6,
+        reviewCount: 130,
+        requiresPrescription: false,
+        description: "Strengthens bones and teeth, especially important for women's health.",
+        brand: "Shelcal",
+        category: "Supplement"
+      },
+      {
+        _id: "12",
+        name: "Vaidyacure PCOS Balance Capsules",
+        dosage: "60 Capsules",
+        image: "vaidyacure.jpg",
+        oldPrice: 850,
+        price: 749,
+        discountPercent: 12,
+        rating: 4.5,
+        reviewCount: 80,
+        requiresPrescription: false,
+        description: "Natural ayurvedic therapy for PCOS, supports hormonal balance and ovarian health.",
+        brand: "Vaidyacure",
+        category: "PCOS"
+      },
+      {
+        _id: "13",
+        name: "The GoodBug Metabolic Fiber Boost",
+        dosage: "30 Servings",
+        image: "Balance.jpg",
+        oldPrice: 999,
+        price: 899,
+        discountPercent: 10,
+        rating: 4.6,
+        reviewCount: 65,
+        requiresPrescription: false,
+        description: "Probiotic and fiber blend for cycle support, gut health, and weight management in women.",
+        brand: "The GoodBug",
+        category: "Supplement"
+      }
+    ];
+
+    let filteredProducts = products;
+
+    // Render products on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      renderProducts(products);
+    });
+
+    function renderProducts(list) {
+      const container = document.getElementById('products-container');
+      container.innerHTML = list.map(p => `
+        <div class="product-card" style="position:relative;cursor:pointer;" onclick="window.location.href='detail.html?id=${p._id}'">
+          <div class="product-image" style="background:#fff;">
+            <img src="${p.image}" alt="${p.name}">
+            ${p.requiresPrescription ? '<span class="prescription-badge">Requires Prescription</span>' : ''}
+            ${p.discountPercent ? `<span style="position:absolute;top:10px;left:10px;background:#ff66b2;color:#fff;padding:3px 8px;border-radius:12px;font-size:12px;">${p.discountPercent}% OFF</span>` : ''}
+          </div>
+          <div class="product-info" style="text-align:center;">
+            <h3 style="font-size:18px;margin-bottom:5px;">${p.name} ${p.dosage || ''}</h3>
+            <div style="margin-bottom:5px;">
+              <span style="color:#ffc107;">${'★'.repeat(Math.round(p.rating))}${'☆'.repeat(5-Math.round(p.rating))}</span>
+              <span style="color:#888;font-size:13px;">(${p.reviewCount})</span>
+            </div>
+            <div style="margin-bottom:5px;">
+              ${p.oldPrice ? `<span style="text-decoration:line-through;color:#888;font-size:15px;">₹${p.oldPrice}</span>` : ''}
+              <span class="price" style="font-size:20px;color:#ff66b2;font-weight:700;margin-left:5px;">₹${p.price}</span>
+            </div>
+            <div style="display:flex;justify-content:center;align-items:center;gap:5px;margin-bottom:10px;">
+              <input type="number" min="1" value="1" style="width:40px;padding:3px 5px;border:1px solid #eee;border-radius:5px;">
+              <button class="add-to-cart" style="background:#28a745;color:#fff;padding:7px 18px;border:none;border-radius:5px;cursor:pointer;">Add to Cart</button>
+              <button class="wishlist-btn" style="background:none;border:none;color:#ff66b2;font-size:20px;cursor:pointer;"><i class="fa fa-heart"></i></button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function showProductDetail(productId) {
+      const product = products.find(p => p._id == productId);
+      if (!product) return;
+      // Main image
+      document.getElementById('detail-main-img').src = product.images ? product.images[0] : product.image;
+      // Gallery
+      const gallery = document.getElementById('detail-gallery');
+      gallery.innerHTML = (product.images && product.images.length > 1)
+        ? product.images.map(img => `<img src="${img}" class="w-16 h-16 object-cover rounded cursor-pointer" onclick="document.getElementById('detail-main-img').src='${img}'">`).join('')
+        : '';
+      // Name, dosage, price
+      document.getElementById('detail-name').textContent = product.name;
+      document.getElementById('detail-dosage').textContent = product.dosage || '';
+      document.getElementById('detail-price').textContent = `₹${product.price}`;
+      // Description
+      document.getElementById('detail-description').textContent = product.description || '';
+      // Ingredients
+      document.getElementById('detail-ingredients').innerHTML = product.ingredients ? `<b>Ingredients:</b> ${product.ingredients.join(', ')}` : '';
+      // Usage
+      document.getElementById('detail-usage').innerHTML = product.usage ? `<b>Usage:</b> ${product.usage}` : '';
+      // Warnings
+      document.getElementById('detail-warnings').innerHTML = product.warnings ? `<b>Warnings:</b> ${product.warnings}` : '';
+      // Reviews
+      document.getElementById('detail-reviews').innerHTML = product.reviews && product.reviews.length ?
+        `<b>Reviews:</b><br>` + product.reviews.map(r => `<div><span style='color:#ffc107;'>${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</span> <b>${r.user}:</b> ${r.comment}</div>`).join('')
+        : '<i>No reviews yet.</i>';
+      // Add to Cart or Upload Prescription
+      document.getElementById('detail-add-to-cart').style.display = product.requiresPrescription ? 'none' : 'inline-block';
+      document.getElementById('detail-upload-prescription').style.display = product.requiresPrescription ? 'inline-block' : 'none';
+      // Related products carousel
+      const related = products.filter(p => p.category === product.category && p._id !== product._id).slice(0, 6);
+      document.getElementById('related-products-carousel').innerHTML = related.length ?
+        related.map(rp => `<div style='min-width:120px;text-align:center;'><img src='${rp.image}' style='width:80px;height:80px;object-fit:cover;border-radius:8px;cursor:pointer;' onclick='showProductDetail("${rp._id}")'><div style='font-size:13px;'>${rp.name}</div></div>`).join('')
+        : '<i>No related products.</i>';
+      // Show modal
+      document.getElementById('product-detail-modal').style.display = 'block';
+    }
+
+    // Add close modal logic if not present
+    Array.from(document.querySelectorAll('.close-modal')).forEach(btn => {
+      btn.onclick = function() {
+        btn.closest('.modal').style.display = 'none';
+      };
+    });
+
+    document.getElementById('search-products').addEventListener('input', function() {
+      const q = this.value.toLowerCase();
+      filteredProducts = products.filter(p =>
+        p.name.toLowerCase().includes(q) ||
+        (p.brand && p.brand.toLowerCase().includes(q)) ||
+        (p.description && p.description.toLowerCase().includes(q))
+      );
+      renderProducts(filteredProducts);
+    });
+
+    document.getElementById('sort-products').addEventListener('change', function() {
+      const val = this.value;
+      if (val === 'price-asc') filteredProducts.sort((a, b) => a.price - b.price);
+      if (val === 'price-desc') filteredProducts.sort((a, b) => b.price - a.price);
+      if (val === 'popularity') filteredProducts.sort((a, b) => (b.rating * b.reviewCount) - (a.rating * a.reviewCount));
+      if (val === 'new') filteredProducts.sort((a, b) => (b._id - a._id)); // or use createdAt if available
+      renderProducts(filteredProducts);
+    });
+
+    let activeCategory = 'all';
+    let activeBrand = 'all';
+
+    function applyFilters() {
+      let list = products;
+      if (activeCategory !== 'all') {
+        list = list.filter(p => p.category === activeCategory);
+      }
+      if (activeBrand !== 'all') {
+        list = list.filter(p => p.brand === activeBrand);
+      }
+      // Apply search filter
+      const q = document.getElementById('search-products').value.toLowerCase();
+      if (q) {
+        list = list.filter(p =>
+          p.name.toLowerCase().includes(q) ||
+          (p.brand && p.brand.toLowerCase().includes(q)) ||
+          (p.description && p.description.toLowerCase().includes(q))
+        );
+      }
+      // Apply sort
+      const val = document.getElementById('sort-products').value;
+      if (val === 'price-asc') list.sort((a, b) => a.price - b.price);
+      if (val === 'price-desc') list.sort((a, b) => b.price - a.price);
+      if (val === 'popularity') list.sort((a, b) => (b.rating * b.reviewCount) - (a.rating * a.reviewCount));
+      if (val === 'new') list.sort((a, b) => (b._id - a._id));
+      renderProducts(list);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      renderFilterButtons();
+      renderProducts(products);
+      // Category filter event
+      document.getElementById('filter-bar').addEventListener('click', function(e) {
+        if (e.target.classList.contains('category-filter-btn')) {
+          document.querySelectorAll('.category-filter-btn').forEach(btn => btn.classList.remove('active'));
+          e.target.classList.add('active');
+          activeCategory = e.target.dataset.category;
+          applyFilters();
+        }
+        if (e.target.classList.contains('brand-filter-btn')) {
+          document.querySelectorAll('.brand-filter-btn').forEach(btn => btn.classList.remove('active'));
+          e.target.classList.add('active');
+          activeBrand = e.target.dataset.brand;
+          applyFilters();
+        }
+      });
+      // Search and sort events
+      document.getElementById('search-products').addEventListener('input', applyFilters);
+      document.getElementById('sort-products').addEventListener('change', applyFilters);
+    });
+    </script>
+</body>
+</html>
